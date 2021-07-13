@@ -1,0 +1,33 @@
+﻿<local:WszystkieViewBaseZDedykowanymFiltrowaniem x:Class="MVVMFirma.Views.WszystkieFakturyView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:MVVMFirma.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    
+    <UserControl.Resources>
+        <ResourceDictionary Source="StyleZakladek.xaml"  />
+    </UserControl.Resources>
+    
+    <Grid>
+        <DataGrid  AutoGenerateColumns="False" ItemsSource="{Binding  List}"  SelectedItem="{Binding WybranaFaktura,Mode=TwoWay}"
+            AlternatingRowBackground="LightGray" Margin="30,10,40,80"  FontSize="14" MinRowHeight="30" HorizontalGridLinesBrush="Transparent" VerticalGridLinesBrush="Transparent"
+            ColumnHeaderHeight="30"  MinColumnWidth="130" BorderBrush="Transparent" Background="White" ColumnHeaderStyle="{StaticResource desk_dataGridheader}" >
+            <DataGrid.Columns>
+                <DataGridTextColumn ElementStyle="{StaticResource desk_dataGridRows}" Header="Numer faktury" Binding="{Binding Numer}"/>
+                <DataGridTextColumn ElementStyle="{StaticResource desk_dataGridRows}" Header="Data wystawienia" Binding="{Binding DataWystawienia, StringFormat={}{0:MM/dd/yyyy}}"/>
+                <DataGridTextColumn ElementStyle="{StaticResource desk_dataGridRows}" Header="Klient" Binding="{Binding KlientNazwa}"/>
+                <DataGridTextColumn ElementStyle="{StaticResource desk_dataGridRows}" Header="Telefon klienta" Binding="{Binding KlientTelefon}"/>
+                <DataGridTextColumn ElementStyle="{StaticResource desk_dataGridRows}" Header="Firma" Binding="{Binding KlientFirma}"/>
+                <DataGridTextColumn ElementStyle="{StaticResource desk_dataGridRows}" Header="NIP" Binding="{Binding KlientNIP}"/>
+                <DataGridTextColumn ElementStyle="{StaticResource desk_dataGridRows}" Header="Data sprzedaży" Binding="{Binding DataSprzedazy, StringFormat={}{0:MM/dd/yyyy}}"/>
+                <DataGridTextColumn ElementStyle="{StaticResource desk_dataGridRows}" Header="Termin płatności" Binding="{Binding TerminPlatnosci, StringFormat={}{0:MM/dd/yyyy}}"/>
+                <DataGridTextColumn ElementStyle="{StaticResource desk_dataGridRows}" Header="Sposób płatności" Binding="{Binding SposobPlatnosciNazwa}"/>
+                <DataGridTextColumn ElementStyle="{StaticResource desk_dataGridRows}" Header="Kwota" Binding="{Binding DoZaplaty}"/>
+                <DataGridTextColumn ElementStyle="{StaticResource desk_dataGridRows}" Header="Zapłacono" Binding="{Binding Zaplacono}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</local:WszystkieViewBaseZDedykowanymFiltrowaniem>

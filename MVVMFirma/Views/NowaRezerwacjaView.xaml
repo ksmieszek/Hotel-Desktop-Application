@@ -1,0 +1,160 @@
+﻿<local:JedenViewBase x:Class="MVVMFirma.Views.NowaRezerwacjaView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:MVVMFirma.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    
+    <UserControl.Resources>
+        <ResourceDictionary Source="StyleZakladek.xaml"  />
+    </UserControl.Resources>
+
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="40" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="90" />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" >
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="150" />
+                    <ColumnDefinition Width="100" />
+                    <ColumnDefinition Width="80" />
+                    <ColumnDefinition Width="20" />
+                    <ColumnDefinition Width="100" />
+                    <ColumnDefinition Width="80" />
+                    <ColumnDefinition Width="20" />
+                    <ColumnDefinition Width="100" />
+                    <ColumnDefinition Width="150" />
+                    <ColumnDefinition Width="20" />
+                    <ColumnDefinition Width="100" />
+                    <ColumnDefinition Width="150" />
+                    <ColumnDefinition Width="20" />
+                    <ColumnDefinition Width="140" />
+                    <ColumnDefinition Width="100" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30" />
+                </Grid.RowDefinitions>
+
+                <Button Grid.Row="0" Grid.Column="0" Content="Wybierz pokój" Style="{StaticResource desk_button}" Command="{Binding ShowPokoje}"  />
+                <Label Grid.Row="0" Grid.Column="1" Content="Numer pokoju" Style="{StaticResource desk_label}" HorizontalAlignment="Right"/>
+                <TextBox Grid.Row="0" Grid.Column="2" Style="{StaticResource desk_textbox_disabled}" Text="{Binding PokojNumerPokoju, UpdateSourceTrigger=PropertyChanged}" Width="80" />
+                
+                <Label Grid.Row="0" Grid.Column="4" Content="Na piętrze" Style="{StaticResource desk_label}" HorizontalAlignment="Right"/>
+                <TextBox Grid.Row="0" Grid.Column="5" Style="{StaticResource desk_textbox_disabled}" Text="{Binding PokojPietro, UpdateSourceTrigger=PropertyChanged}" Width="80" />
+
+                <Label Grid.Row="0" Grid.Column="7" Content="Rodzaj" Style="{StaticResource desk_label}" HorizontalAlignment="Right"/>
+                <TextBox Grid.Row="0" Grid.Column="8" Style="{StaticResource desk_textbox_disabled}" Text="{Binding PokojRodzaj, UpdateSourceTrigger=PropertyChanged}" Width="150" />
+                
+                <Label Grid.Row="0" Grid.Column="10" Content="Nazwa" Style="{StaticResource desk_label}" HorizontalAlignment="Right"/>
+                <TextBox Grid.Row="0" Grid.Column="11" Style="{StaticResource desk_textbox_disabled}" Text="{Binding PokojNazwa, UpdateSourceTrigger=PropertyChanged}" Width="150" />
+                
+                <Label Grid.Row="0" Grid.Column="13" Content="Cena za dobę" Style="{StaticResource desk_label}" HorizontalAlignment="Right"/>
+                <TextBox Grid.Row="0" Grid.Column="14" Style="{StaticResource desk_textbox_disabled}" Text="{Binding PokojCena, UpdateSourceTrigger=PropertyChanged}" Width="100" />
+            </Grid>
+        </StackPanel>
+
+        <StackPanel Grid.Row="2">
+            <Label Style="{StaticResource desk_label}" Content="Okres pobytu"  FontWeight="Bold" Margin="0,0,0,10"/>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="150" />
+                    <ColumnDefinition Width="100" />
+                    <ColumnDefinition Width="150" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Style="{StaticResource RowDefinitionSeparacyjny}" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Style="{StaticResource RowDefinitionPaddingKategorii}" />
+                </Grid.RowDefinitions>
+
+                <Label Grid.Row="0" Grid.Column="0" Content="Dzień przyjazdu" Style="{StaticResource desk_label}"/>
+                <Label Grid.Row="0" Grid.Column="2" Content="Data wyjazdu" Style="{StaticResource desk_label}"/>
+                <DatePicker Grid.Row="2" Grid.Column="0" Style="{StaticResource DatePickerStandardowy}"  SelectedDate="{Binding  Path=DataRozpoczecia, UpdateSourceTrigger=PropertyChanged}"/>
+                <DatePicker Grid.Row="2" Grid.Column="2" Style="{StaticResource DatePickerStandardowy}"  SelectedDate="{Binding  Path=DataZakonczenia, UpdateSourceTrigger=PropertyChanged}"/>
+            </Grid>
+        </StackPanel>
+
+        <StackPanel Grid.Row="4">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="150" />
+                    <ColumnDefinition Width="150" />
+                    <ColumnDefinition Width="150" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30" />
+                    <RowDefinition Height="10" />
+                    <RowDefinition Height="30" />
+                    <RowDefinition Height="10" />
+                    <RowDefinition Height="30" />
+                    <RowDefinition Height="10" />
+                    <RowDefinition Height="30" />
+                    <RowDefinition Height="10" />
+                    <RowDefinition Height="30" />
+                </Grid.RowDefinitions>
+
+                <Label Grid.Row="0" Grid.Column="0" Style="{StaticResource desk_label}" Content="Wartość netto"/>
+                <Border Grid.Row="0" Grid.Column="1" Style="{StaticResource desk_border}">
+                    <TextBox Style="{StaticResource desk_textbox_disabled}" Text="{Binding Netto, UpdateSourceTrigger=PropertyChanged}" />
+                </Border>
+                <Label Grid.Row="0" Grid.Column="2" Style="{StaticResource desk_label}" Content="zł" />
+                
+                <Label Grid.Row="2" Grid.Column="0" Style="{StaticResource desk_label}" Content="Rabat[%]"/>
+                <Border Grid.Row="2" Grid.Column="1" Style="{StaticResource desk_border}">
+                    <TextBox Style="{StaticResource desk_textbox}" Text="{Binding Rabat, UpdateSourceTrigger=PropertyChanged}"/>
+                </Border>
+
+                <Label Grid.Row="4" Grid.Column="0" Style="{StaticResource desk_label}" Content="VAT[%]"/>
+                <Border Grid.Row="4" Grid.Column="1" Style="{StaticResource desk_border}" >
+                    <ComboBox Style="{StaticResource desk_combobox}" Text="{Binding VAT, UpdateSourceTrigger=PropertyChanged}">
+                        <ComboBoxItem Content="0"></ComboBoxItem>
+                        <ComboBoxItem Content="5"></ComboBoxItem>
+                        <ComboBoxItem Content="8"></ComboBoxItem>
+                        <ComboBoxItem Content="23"></ComboBoxItem>
+                    </ComboBox>
+                </Border>
+
+                <Label Grid.Row="6" Grid.Column="0" Style="{StaticResource desk_label}" Content="Wartość brutto"/>
+                <Border Grid.Row="6" Grid.Column="1" Style="{StaticResource desk_border}">
+                    <TextBox Style="{StaticResource desk_textbox_disabled}" Text="{Binding Brutto, UpdateSourceTrigger=PropertyChanged}" />
+                </Border>
+                <Label Grid.Row="6" Grid.Column="2" Style="{StaticResource desk_label}" Content="zł" />
+
+                <Label Grid.Row="8" Grid.Column="0" Style="{StaticResource desk_label}" Content="Do zapłaty"/>
+                <Border Grid.Row="8" Grid.Column="1" Style="{StaticResource desk_border}">
+                    <TextBox Style="{StaticResource desk_textbox_disabled}" Text="{Binding DoZaplaty, UpdateSourceTrigger=PropertyChanged}"/>
+                </Border>
+                <Label Grid.Row="8" Grid.Column="2" Style="{StaticResource desk_label}" Content="zł" />
+            </Grid>
+        </StackPanel>
+
+        <StackPanel Grid.Row="6">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="150" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30" />
+                    <RowDefinition Height="150" />
+                </Grid.RowDefinitions>
+                <Label Grid.Row="0" Grid.Column="0" Style="{StaticResource desk_label}" Content="Uwagi" FontWeight="Bold" />
+                <Border Grid.Row="0" Grid.Column="1" Grid.RowSpan="2" Width="850" Style="{StaticResource desk_border}" HorizontalAlignment="Left" >
+                    <TextBox Width="850" Style="{StaticResource desk_richtextbox}" />
+                </Border>
+            </Grid>
+        </StackPanel>
+
+     </Grid>
+</local:JedenViewBase>

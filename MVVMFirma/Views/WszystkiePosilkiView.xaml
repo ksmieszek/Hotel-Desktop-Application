@@ -1,0 +1,31 @@
+﻿<local:WszystkieViewBaseZDedykowanymFiltrowaniem x:Class="MVVMFirma.Views.WszystkiePosilkiView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:MVVMFirma.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+
+    <UserControl.Resources>
+        <ResourceDictionary Source="StyleZakladek.xaml"  />
+    </UserControl.Resources>
+
+    <Grid>
+        <DataGrid AutoGenerateColumns="False" ItemsSource="{Binding  List}" SelectedItem="{Binding WybranyPosilek,Mode=TwoWay}"
+            AlternatingRowBackground="LightGray" Margin="30,10,40,80"  FontSize="14" MinRowHeight="30" HorizontalGridLinesBrush="Transparent" VerticalGridLinesBrush="Transparent"
+            ColumnHeaderHeight="30"  MinColumnWidth="130" BorderBrush="Transparent" Background="White" ColumnHeaderStyle="{StaticResource desk_dataGridheader}">
+            <DataGrid.Columns>
+                <DataGridTextColumn ElementStyle="{StaticResource desk_dataGridRows}" Header="Potrawa" Binding="{Binding PotrawaNazwa}"/>
+                <DataGridTextColumn ElementStyle="{StaticResource desk_dataGridRows}" Header="Ilość" Binding="{Binding IloscPotrawy}"/>
+                <DataGridTextColumn ElementStyle="{StaticResource desk_dataGridRows}" Header="Napój" Binding="{Binding NapojNazwa}"/>
+                <DataGridTextColumn ElementStyle="{StaticResource desk_dataGridRows}" Header="Ilość" Binding="{Binding IloscNapoju}"/>
+                <DataGridTextColumn ElementStyle="{StaticResource desk_dataGridRows}" Header="Data zamówienia" Binding="{Binding DataZamowienia, StringFormat={}{0:MM/dd/yyyy}}"/>
+                <DataGridTextColumn ElementStyle="{StaticResource desk_dataGridRows}" Header="Netto" Binding="{Binding Netto}"/>
+                <DataGridTextColumn ElementStyle="{StaticResource desk_dataGridRows}" Header="VAT[%]" Binding="{Binding VAT}"/>
+                <DataGridTextColumn ElementStyle="{StaticResource desk_dataGridRows}" Header="Rabat[%]" Binding="{Binding Rabat}"/>
+                <DataGridTextColumn ElementStyle="{StaticResource desk_dataGridRows}" Header="Brutto" Binding="{Binding Brutto}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</local:WszystkieViewBaseZDedykowanymFiltrowaniem>

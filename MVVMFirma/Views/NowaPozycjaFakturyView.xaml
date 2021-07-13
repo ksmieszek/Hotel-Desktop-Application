@@ -1,0 +1,96 @@
+﻿<local:JedenViewBase x:Class="MVVMFirma.Views.NowaPozycjaFakturyView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:MVVMFirma.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+
+    <UserControl.Resources>
+        <ResourceDictionary Source="StyleZakladek.xaml"  />
+    </UserControl.Resources>
+
+
+    <Grid Margin="30,20,0,0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Grid.Column="0">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="120"/>
+                    <ColumnDefinition Width="120"/>
+                    <ColumnDefinition Width="150"/>
+                    <ColumnDefinition Width="150"/>
+                    <ColumnDefinition Width="150"/>
+                    <ColumnDefinition Width="100"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="25"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                </Grid.RowDefinitions>
+
+                <Button Grid.Row="0" Grid.Column="0" Content="Faktura" Style="{StaticResource desk_button}" Command="{Binding ShowFaktury}"  />
+                <Label Grid.Row="0" Grid.Column="1" Style="{StaticResource desk_label}" Content="Numer" HorizontalAlignment="Right"/>
+                <TextBox Grid.Row="0" Grid.Column="2" Style="{StaticResource desk_textbox_disabled}" Text="{Binding FakturaNumer, UpdateSourceTrigger=PropertyChanged}"  />
+                <Label Grid.Row="0" Grid.Column="3" Style="{StaticResource desk_label}" Content="Data wystawienia" HorizontalAlignment="Right"/>
+                <TextBox Grid.Row="0" Grid.Column="4" Style="{StaticResource desk_textbox_disabled}" Text="{Binding FakturaDataWystawienia, UpdateSourceTrigger=PropertyChanged, StringFormat={}{0:MM/dd/yyyy}}"  />
+                
+                <Button Grid.Row="2" Grid.Column="0" Content="Usługa" Style="{StaticResource desk_button}" Command="{Binding ShowUslugi}"  />
+                <Label Grid.Row="2" Grid.Column="1" Style="{StaticResource desk_label}" Content="Kod" HorizontalAlignment="Right"/>
+                <TextBox Grid.Row="2" Grid.Column="2" Style="{StaticResource desk_textbox_disabled}" Text="{Binding UslugaKod, UpdateSourceTrigger=PropertyChanged}"  />
+                <Label Grid.Row="2" Grid.Column="3" Style="{StaticResource desk_label}" Content="Usługa" HorizontalAlignment="Right"/>
+                <TextBox Grid.Row="2" Grid.Column="4" Grid.ColumnSpan="2" Width="250" Style="{StaticResource desk_textbox_disabled}" Text="{Binding UslugaNazwa, UpdateSourceTrigger=PropertyChanged, StringFormat={}{0:MM/dd/yyyy}}"  />
+            </Grid>
+        </StackPanel>
+
+        <StackPanel Grid.Row="2" Grid.Column="0">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="120"/>
+                    <ColumnDefinition Width="150"/>
+                    <ColumnDefinition Width="80"/>
+                    <ColumnDefinition Width="120"/>
+                    <ColumnDefinition Width="150"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="20"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="20"/>
+                    <RowDefinition Height="30"/>
+                </Grid.RowDefinitions>
+
+                <Label Grid.Row="0" Grid.Column="0" Style="{StaticResource desk_label}" Content="Ilość"/>
+                <Border Grid.Row="0" Grid.Column="1" Style="{StaticResource desk_border}">
+                    <TextBox Style="{StaticResource desk_textbox}" Text="{Binding Ilosc, UpdateSourceTrigger=PropertyChanged}"/>
+                </Border>
+
+                <Label Grid.Row="2" Grid.Column="0" Style="{StaticResource desk_label}" Content="Rabat"/>
+                <Border Grid.Row="2" Grid.Column="1" Style="{StaticResource desk_border}">
+                    <TextBox Style="{StaticResource desk_textbox}" Text="{Binding Rabat, UpdateSourceTrigger=PropertyChanged}"/>
+                </Border>
+
+                <Label Grid.Row="4" Grid.Column="0" Style="{StaticResource desk_label}" Content="Cena"/>
+                <Border Grid.Row="4" Grid.Column="1" Style="{StaticResource desk_border}">
+                    <TextBox Style="{StaticResource desk_textbox_disabled}" Text="{Binding Cena, UpdateSourceTrigger=PropertyChanged}"/>
+                </Border>
+                <Label Grid.Row="4" Grid.Column="2" Style="{StaticResource desk_label}" Content="zł" />
+            </Grid>
+        </StackPanel>
+        
+    </Grid>
+</local:JedenViewBase>

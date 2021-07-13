@@ -1,0 +1,104 @@
+﻿<local:JedenViewBase x:Class="MVVMFirma.Views.NowaUslugaView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:MVVMFirma.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+
+    <UserControl.Resources>
+        <ResourceDictionary Source="StyleZakladek.xaml"  />
+    </UserControl.Resources>
+
+
+    <Grid Margin="30,20,0,0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="2" Grid.Column="0">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="150"/>
+                    <ColumnDefinition Width="120"/>
+                    <ColumnDefinition Width="75"/>
+                    <ColumnDefinition Width="75"/>
+                    <ColumnDefinition Width="30"/>
+                    <ColumnDefinition Width="60"/>
+                    <ColumnDefinition Width="60"/>
+                    <ColumnDefinition Width="120"/>
+                    <ColumnDefinition Width="150"/>
+                    <ColumnDefinition Width="30"/>
+                    <ColumnDefinition Width="60"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="20"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                </Grid.RowDefinitions>
+
+                <Button Grid.Row="0" Grid.Column="0" Content="Rezerwacja" Style="{StaticResource desk_button}" Command="{Binding ShowRezerwacje}" />
+                <Label Grid.Row="0" Grid.Column="1" Style="{StaticResource desk_label}" Content="Numer pokoju" HorizontalAlignment="Right"/>
+                <TextBox Grid.Row="0" Grid.Column="2" Style="{StaticResource desk_textbox_disabled}" Text="{Binding RezerwacjaNumerPokoju, UpdateSourceTrigger=PropertyChanged}" Width="75"/>
+
+                <Label Grid.Row="0" Grid.Column="4" Style="{StaticResource desk_label}" Content="Od" HorizontalAlignment="Right"/>
+                <TextBox Grid.Row="0" Grid.Column="5" Grid.ColumnSpan="2" Style="{StaticResource desk_textbox_disabled}" Text="{Binding DataRozpoczecia, UpdateSourceTrigger=PropertyChanged, StringFormat={}{0:MM/dd/yyyy}}" Width="120" />
+
+                <Label Grid.Row="0" Grid.Column="7" Style="{StaticResource desk_label}" Content="Do" HorizontalAlignment="Right"/>
+                <TextBox Grid.Row="0" Grid.Column="8" Style="{StaticResource desk_textbox_disabled}" Text="{Binding DataZakonczenia, UpdateSourceTrigger=PropertyChanged, StringFormat={}{0:MM/dd/yyyy}}" Width="120" HorizontalAlignment="Left" />
+
+                <Button Grid.Row="2" Grid.Column="0" Content="Posiłek" Style="{StaticResource desk_button}" Command="{Binding ShowPosilki}" />
+                <Label Grid.Row="2" Grid.Column="1" Style="{StaticResource desk_label}" Content="Potrawa" HorizontalAlignment="Right"/>
+                <TextBox Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2" Style="{StaticResource desk_textbox_disabled}" Text="{Binding PotrawaNazwa, UpdateSourceTrigger=PropertyChanged}" />
+                <Label Grid.Row="2" Grid.Column="4" Style="{StaticResource desk_label}" Content="x" HorizontalAlignment="Right"/>
+                <TextBox Grid.Row="2" Grid.Column="5" Style="{StaticResource desk_textbox_disabled}" Text="{Binding IloscPotrawy, UpdateSourceTrigger=PropertyChanged}" Width="60"/>
+
+                <Label Grid.Row="2" Grid.Column="7" Style="{StaticResource desk_label}" Content="Napoj" HorizontalAlignment="Right"/>
+                <TextBox Grid.Row="2" Grid.Column="8" Style="{StaticResource desk_textbox_disabled}" Text="{Binding NapojNazwa, UpdateSourceTrigger=PropertyChanged}" />
+                <Label Grid.Row="2" Grid.Column="9" Style="{StaticResource desk_label}" Content="x" HorizontalAlignment="Right"/>
+                <TextBox Grid.Row="2" Grid.Column="10" Style="{StaticResource desk_textbox_disabled}" Text="{Binding IloscNapoju, UpdateSourceTrigger=PropertyChanged}" Width="60"/>
+            </Grid>
+        </StackPanel>
+
+        <StackPanel Grid.Row="0" Grid.Column="0">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="120"/>
+                    <ColumnDefinition Width="150"/>
+                    <ColumnDefinition Width="80"/>
+                    <ColumnDefinition Width="120"/>
+                    <ColumnDefinition Width="150"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="20"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="20"/>
+                    <RowDefinition Height="30"/>
+                </Grid.RowDefinitions>
+
+                <Label Grid.Row="0" Grid.Column="0" Style="{StaticResource desk_label}" Content="Kod"/>
+                <Border Grid.Row="0" Grid.Column="1" Style="{StaticResource desk_border}">
+                    <TextBox Style="{StaticResource desk_textbox}" Text="{Binding Kod, UpdateSourceTrigger=PropertyChanged}"/>
+                </Border>
+
+                <Label Grid.Row="2" Grid.Column="0" Style="{StaticResource desk_label}" Content="Nazwa"/>
+                <Border Grid.Row="2" Grid.Column="1" Style="{StaticResource desk_border}">
+                    <TextBox Style="{StaticResource desk_textbox}" Text="{Binding Nazwa, UpdateSourceTrigger=PropertyChanged}"/>
+                </Border>
+            </Grid>
+        </StackPanel>
+
+    </Grid>
+</local:JedenViewBase>

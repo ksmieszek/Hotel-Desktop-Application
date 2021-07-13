@@ -1,0 +1,1400 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="HotelModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Adresy">
+          <Key>
+            <PropertyRef Name="IdAdresu" />
+          </Key>
+          <Property Name="IdAdresu" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Kraj" Type="nvarchar" MaxLength="50" />
+          <Property Name="Wojewodztwo" Type="nvarchar" MaxLength="50" />
+          <Property Name="Miasto" Type="nvarchar" MaxLength="50" />
+          <Property Name="KodPocztowy" Type="nvarchar" MaxLength="50" />
+          <Property Name="Ulica" Type="nvarchar" MaxLength="50" />
+          <Property Name="NumerBudynku" Type="nvarchar" MaxLength="50" />
+          <Property Name="NumerLokalu" Type="nvarchar" MaxLength="50" />
+          <Property Name="Fax" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Faktury">
+          <Key>
+            <PropertyRef Name="IdFaktury" />
+          </Key>
+          <Property Name="IdFaktury" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Numer" Type="nvarchar" MaxLength="50" />
+          <Property Name="DataWystawienia" Type="date" />
+          <Property Name="IdKlienta" Type="int" />
+          <Property Name="TerminPlatnosci" Type="date" />
+          <Property Name="IdSposobuPlatnosci" Type="int" />
+          <Property Name="IdPracownika" Type="int" />
+          <Property Name="DataSprzedazy" Type="date" />
+          <Property Name="Zaplacono" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="DoZaplaty" Type="decimal" Precision="18" Scale="0" />
+        </EntityType>
+        <EntityType Name="Klienci">
+          <Key>
+            <PropertyRef Name="IdKlienta" />
+          </Key>
+          <Property Name="IdKlienta" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Imie" Type="nvarchar" MaxLength="50" />
+          <Property Name="Nazwisko" Type="nvarchar" MaxLength="50" />
+          <Property Name="Telefon" Type="nvarchar" MaxLength="50" />
+          <Property Name="E-mail" Type="nvarchar" MaxLength="50" />
+          <Property Name="IdRodzaju" Type="int" />
+          <Property Name="IdAdresu" Type="int" />
+          <Property Name="PESEL" Type="nvarchar" MaxLength="50" />
+          <Property Name="Plec" Type="nvarchar" MaxLength="50" />
+          <Property Name="DrugieImie" Type="nvarchar" MaxLength="50" />
+          <Property Name="Firma" Type="nvarchar" MaxLength="50" />
+          <Property Name="NIP" Type="nvarchar" MaxLength="50" />
+          <Property Name="REGON" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Napoje">
+          <Key>
+            <PropertyRef Name="IdNapoju" />
+          </Key>
+          <Property Name="IdNapoju" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Sklad" Type="nvarchar(max)" />
+          <Property Name="Cena" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="IdRodzajuNapoju" Type="int" />
+          <Property Name="Nazwa" Type="nvarchar" MaxLength="50" />
+          <Property Name="Opis" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Pokoje">
+          <Key>
+            <PropertyRef Name="IdPokoju" />
+          </Key>
+          <Property Name="IdPokoju" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NumerPokoju" Type="int" />
+          <Property Name="IdAdresu" Type="int" />
+          <Property Name="Pietro" Type="int" />
+          <Property Name="Nazwa" Type="nvarchar" MaxLength="50" />
+          <Property Name="Wysposazenie" Type="nvarchar(max)" />
+          <Property Name="IdStatusu" Type="int" />
+          <Property Name="Cena" Type="float" />
+          <Property Name="Rodzaj" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Posilki">
+          <Key>
+            <PropertyRef Name="IdPosilku" />
+          </Key>
+          <Property Name="IdPosilku" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdPotrawy" Type="int" />
+          <Property Name="IdNapoju" Type="int" />
+          <Property Name="IloscPotrawy" Type="int" />
+          <Property Name="IloscNapoju" Type="int" />
+          <Property Name="Opis" Type="nvarchar(max)" />
+          <Property Name="Nazwa" Type="nvarchar(max)" />
+          <Property Name="DataZamowienia" Type="date" />
+          <Property Name="Netto" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="Rabat" Type="float" />
+          <Property Name="VAT" Type="float" />
+          <Property Name="Brutto" Type="decimal" Precision="18" Scale="0" />
+        </EntityType>
+        <EntityType Name="Potrawy">
+          <Key>
+            <PropertyRef Name="IdPotrawy" />
+          </Key>
+          <Property Name="IdPotrawy" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Sklad" Type="nvarchar(max)" />
+          <Property Name="Cena" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="IdRodzajuPotrawy" Type="int" />
+          <Property Name="Nazwa" Type="nvarchar" MaxLength="50" />
+          <Property Name="Opis" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="PozycjeFaktury">
+          <Key>
+            <PropertyRef Name="IdPozycjiFaktury" />
+          </Key>
+          <Property Name="IdPozycjiFaktury" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdFaktury" Type="int" />
+          <Property Name="IdUslugi" Type="int" />
+          <Property Name="Cena" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="Ilosc" Type="int" />
+          <Property Name="Rabat" Type="decimal" Precision="18" Scale="0" />
+        </EntityType>
+        <EntityType Name="Pracownicy">
+          <Key>
+            <PropertyRef Name="IdPracownika" />
+          </Key>
+          <Property Name="IdPracownika" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Imie" Type="nvarchar" MaxLength="50" />
+          <Property Name="Nazwisko" Type="nvarchar" MaxLength="50" />
+          <Property Name="IdAdresu" Type="int" />
+          <Property Name="Login" Type="nvarchar" MaxLength="50" />
+          <Property Name="Haslo" Type="nvarchar" MaxLength="50" />
+          <Property Name="PESEL" Type="nvarchar" MaxLength="50" />
+          <Property Name="Telefon" Type="nvarchar" MaxLength="50" />
+          <Property Name="Wyplata" Type="decimal" Precision="18" Scale="0" />
+        </EntityType>
+        <EntityType Name="Rezerwacje">
+          <Key>
+            <PropertyRef Name="IdRezerwacji" />
+          </Key>
+          <Property Name="IdRezerwacji" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DataRozpoczecia" Type="date" />
+          <Property Name="DataZakonczenia" Type="date" />
+          <Property Name="IdPokoju" Type="int" />
+          <Property Name="Netto" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="Rabat" Type="float" />
+          <Property Name="VAT" Type="float" />
+          <Property Name="Brutto" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="DoZaplaty" Type="decimal" Precision="18" Scale="0" />
+        </EntityType>
+        <EntityType Name="RodzajeKlientow">
+          <Key>
+            <PropertyRef Name="IdRodzaju" />
+          </Key>
+          <Property Name="IdRodzaju" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nazwa" Type="nvarchar" MaxLength="50" />
+          <Property Name="Opis" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="RodzajeNapojow">
+          <Key>
+            <PropertyRef Name="IdRodzajuNapoju" />
+          </Key>
+          <Property Name="IdRodzajuNapoju" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nazwa" Type="nvarchar" MaxLength="50" />
+          <Property Name="Opis" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="RodzajePotraw">
+          <Key>
+            <PropertyRef Name="IdRodzajuPotrawy" />
+          </Key>
+          <Property Name="IdRodzajuPotrawy" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nazwa" Type="nvarchar" MaxLength="50" />
+          <Property Name="Opis" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="SposobyPlatnosci">
+          <Key>
+            <PropertyRef Name="IdSposobuPlatnosci" />
+          </Key>
+          <Property Name="IdSposobuPlatnosci" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nazwa" Type="nvarchar" MaxLength="50" />
+          <Property Name="Opis" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Stanowiska">
+          <Key>
+            <PropertyRef Name="IdStanowiska" />
+          </Key>
+          <Property Name="IdStanowiska" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nazwa" Type="nvarchar" MaxLength="50" />
+          <Property Name="Opis" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="StanowiskaPracownikow">
+          <Key>
+            <PropertyRef Name="IdStanowiskaPracownika" />
+          </Key>
+          <Property Name="IdStanowiskaPracownika" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdPracownika" Type="int" />
+          <Property Name="DataOd" Type="date" />
+          <Property Name="DataDo" Type="date" />
+          <Property Name="IdStanowiska" Type="int" />
+        </EntityType>
+        <EntityType Name="StatusyPokoju">
+          <Key>
+            <PropertyRef Name="IdStatusu" />
+          </Key>
+          <Property Name="IdStatusu" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nazwa" Type="nvarchar" MaxLength="50" />
+          <Property Name="Opis" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Uslugi">
+          <Key>
+            <PropertyRef Name="IdUslugi" />
+          </Key>
+          <Property Name="IdUslugi" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Kod" Type="nvarchar" MaxLength="50" />
+          <Property Name="Nazwa" Type="nvarchar(max)" />
+          <Property Name="IdPosilku" Type="int" />
+          <Property Name="IdRezerwacji" Type="int" />
+        </EntityType>
+        <Association Name="FK_Faktury_Klienci">
+          <End Role="Klienci" Type="Self.Klienci" Multiplicity="0..1" />
+          <End Role="Faktury" Type="Self.Faktury" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Klienci">
+              <PropertyRef Name="IdKlienta" />
+            </Principal>
+            <Dependent Role="Faktury">
+              <PropertyRef Name="IdKlienta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Faktury_Pracownicy">
+          <End Role="Pracownicy" Type="Self.Pracownicy" Multiplicity="0..1" />
+          <End Role="Faktury" Type="Self.Faktury" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pracownicy">
+              <PropertyRef Name="IdPracownika" />
+            </Principal>
+            <Dependent Role="Faktury">
+              <PropertyRef Name="IdPracownika" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Faktury_SposobyPlatnosci">
+          <End Role="SposobyPlatnosci" Type="Self.SposobyPlatnosci" Multiplicity="0..1" />
+          <End Role="Faktury" Type="Self.Faktury" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SposobyPlatnosci">
+              <PropertyRef Name="IdSposobuPlatnosci" />
+            </Principal>
+            <Dependent Role="Faktury">
+              <PropertyRef Name="IdSposobuPlatnosci" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Klienci_Adresy">
+          <End Role="Adresy" Type="Self.Adresy" Multiplicity="0..1" />
+          <End Role="Klienci" Type="Self.Klienci" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Adresy">
+              <PropertyRef Name="IdAdresu" />
+            </Principal>
+            <Dependent Role="Klienci">
+              <PropertyRef Name="IdAdresu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Klienci_RodzajeKlientow">
+          <End Role="RodzajeKlientow" Type="Self.RodzajeKlientow" Multiplicity="0..1" />
+          <End Role="Klienci" Type="Self.Klienci" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RodzajeKlientow">
+              <PropertyRef Name="IdRodzaju" />
+            </Principal>
+            <Dependent Role="Klienci">
+              <PropertyRef Name="IdRodzaju" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Napoje_RodzajeNapojow">
+          <End Role="RodzajeNapojow" Type="Self.RodzajeNapojow" Multiplicity="0..1" />
+          <End Role="Napoje" Type="Self.Napoje" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RodzajeNapojow">
+              <PropertyRef Name="IdRodzajuNapoju" />
+            </Principal>
+            <Dependent Role="Napoje">
+              <PropertyRef Name="IdRodzajuNapoju" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pokoje_Adresy">
+          <End Role="Adresy" Type="Self.Adresy" Multiplicity="0..1" />
+          <End Role="Pokoje" Type="Self.Pokoje" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Adresy">
+              <PropertyRef Name="IdAdresu" />
+            </Principal>
+            <Dependent Role="Pokoje">
+              <PropertyRef Name="IdAdresu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pokoje_StatusyPokoju">
+          <End Role="StatusyPokoju" Type="Self.StatusyPokoju" Multiplicity="0..1" />
+          <End Role="Pokoje" Type="Self.Pokoje" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StatusyPokoju">
+              <PropertyRef Name="IdStatusu" />
+            </Principal>
+            <Dependent Role="Pokoje">
+              <PropertyRef Name="IdStatusu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Posilki_Napoje">
+          <End Role="Napoje" Type="Self.Napoje" Multiplicity="0..1" />
+          <End Role="Posilki" Type="Self.Posilki" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Napoje">
+              <PropertyRef Name="IdNapoju" />
+            </Principal>
+            <Dependent Role="Posilki">
+              <PropertyRef Name="IdNapoju" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Posilki_Potrawy">
+          <End Role="Potrawy" Type="Self.Potrawy" Multiplicity="0..1" />
+          <End Role="Posilki" Type="Self.Posilki" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Potrawy">
+              <PropertyRef Name="IdPotrawy" />
+            </Principal>
+            <Dependent Role="Posilki">
+              <PropertyRef Name="IdPotrawy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Potrawy_RodzajePotraw">
+          <End Role="RodzajePotraw" Type="Self.RodzajePotraw" Multiplicity="0..1" />
+          <End Role="Potrawy" Type="Self.Potrawy" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RodzajePotraw">
+              <PropertyRef Name="IdRodzajuPotrawy" />
+            </Principal>
+            <Dependent Role="Potrawy">
+              <PropertyRef Name="IdRodzajuPotrawy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PozycjeFaktury_Faktury">
+          <End Role="Faktury" Type="Self.Faktury" Multiplicity="0..1" />
+          <End Role="PozycjeFaktury" Type="Self.PozycjeFaktury" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Faktury">
+              <PropertyRef Name="IdFaktury" />
+            </Principal>
+            <Dependent Role="PozycjeFaktury">
+              <PropertyRef Name="IdFaktury" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PozycjeFaktury_Uslugi">
+          <End Role="Uslugi" Type="Self.Uslugi" Multiplicity="0..1" />
+          <End Role="PozycjeFaktury" Type="Self.PozycjeFaktury" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Uslugi">
+              <PropertyRef Name="IdUslugi" />
+            </Principal>
+            <Dependent Role="PozycjeFaktury">
+              <PropertyRef Name="IdUslugi" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pracownicy_Adresy">
+          <End Role="Adresy" Type="Self.Adresy" Multiplicity="0..1" />
+          <End Role="Pracownicy" Type="Self.Pracownicy" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Adresy">
+              <PropertyRef Name="IdAdresu" />
+            </Principal>
+            <Dependent Role="Pracownicy">
+              <PropertyRef Name="IdAdresu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Rezerwacje_Pokoje">
+          <End Role="Pokoje" Type="Self.Pokoje" Multiplicity="0..1" />
+          <End Role="Rezerwacje" Type="Self.Rezerwacje" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pokoje">
+              <PropertyRef Name="IdPokoju" />
+            </Principal>
+            <Dependent Role="Rezerwacje">
+              <PropertyRef Name="IdPokoju" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StanowiskaPracownikow_Pracownicy1">
+          <End Role="Pracownicy" Type="Self.Pracownicy" Multiplicity="0..1" />
+          <End Role="StanowiskaPracownikow" Type="Self.StanowiskaPracownikow" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pracownicy">
+              <PropertyRef Name="IdPracownika" />
+            </Principal>
+            <Dependent Role="StanowiskaPracownikow">
+              <PropertyRef Name="IdPracownika" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StanowiskaPracownikow_Stanowiska">
+          <End Role="Stanowiska" Type="Self.Stanowiska" Multiplicity="0..1" />
+          <End Role="StanowiskaPracownikow" Type="Self.StanowiskaPracownikow" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Stanowiska">
+              <PropertyRef Name="IdStanowiska" />
+            </Principal>
+            <Dependent Role="StanowiskaPracownikow">
+              <PropertyRef Name="IdStanowiska" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Uslugi_Posilki">
+          <End Role="Posilki" Type="Self.Posilki" Multiplicity="0..1" />
+          <End Role="Uslugi" Type="Self.Uslugi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Posilki">
+              <PropertyRef Name="IdPosilku" />
+            </Principal>
+            <Dependent Role="Uslugi">
+              <PropertyRef Name="IdPosilku" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Uslugi_Rezerwacje">
+          <End Role="Rezerwacje" Type="Self.Rezerwacje" Multiplicity="0..1" />
+          <End Role="Uslugi" Type="Self.Uslugi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rezerwacje">
+              <PropertyRef Name="IdRezerwacji" />
+            </Principal>
+            <Dependent Role="Uslugi">
+              <PropertyRef Name="IdRezerwacji" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="HotelModelStoreContainer">
+          <EntitySet Name="Adresy" EntityType="Self.Adresy" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Faktury" EntityType="Self.Faktury" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Klienci" EntityType="Self.Klienci" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Napoje" EntityType="Self.Napoje" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pokoje" EntityType="Self.Pokoje" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Posilki" EntityType="Self.Posilki" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Potrawy" EntityType="Self.Potrawy" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PozycjeFaktury" EntityType="Self.PozycjeFaktury" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pracownicy" EntityType="Self.Pracownicy" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Rezerwacje" EntityType="Self.Rezerwacje" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RodzajeKlientow" EntityType="Self.RodzajeKlientow" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RodzajeNapojow" EntityType="Self.RodzajeNapojow" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RodzajePotraw" EntityType="Self.RodzajePotraw" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SposobyPlatnosci" EntityType="Self.SposobyPlatnosci" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Stanowiska" EntityType="Self.Stanowiska" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StanowiskaPracownikow" EntityType="Self.StanowiskaPracownikow" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StatusyPokoju" EntityType="Self.StatusyPokoju" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Uslugi" EntityType="Self.Uslugi" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Faktury_Klienci" Association="Self.FK_Faktury_Klienci">
+            <End Role="Klienci" EntitySet="Klienci" />
+            <End Role="Faktury" EntitySet="Faktury" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Faktury_Pracownicy" Association="Self.FK_Faktury_Pracownicy">
+            <End Role="Pracownicy" EntitySet="Pracownicy" />
+            <End Role="Faktury" EntitySet="Faktury" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Faktury_SposobyPlatnosci" Association="Self.FK_Faktury_SposobyPlatnosci">
+            <End Role="SposobyPlatnosci" EntitySet="SposobyPlatnosci" />
+            <End Role="Faktury" EntitySet="Faktury" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Klienci_Adresy" Association="Self.FK_Klienci_Adresy">
+            <End Role="Adresy" EntitySet="Adresy" />
+            <End Role="Klienci" EntitySet="Klienci" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Klienci_RodzajeKlientow" Association="Self.FK_Klienci_RodzajeKlientow">
+            <End Role="RodzajeKlientow" EntitySet="RodzajeKlientow" />
+            <End Role="Klienci" EntitySet="Klienci" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Napoje_RodzajeNapojow" Association="Self.FK_Napoje_RodzajeNapojow">
+            <End Role="RodzajeNapojow" EntitySet="RodzajeNapojow" />
+            <End Role="Napoje" EntitySet="Napoje" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pokoje_Adresy" Association="Self.FK_Pokoje_Adresy">
+            <End Role="Adresy" EntitySet="Adresy" />
+            <End Role="Pokoje" EntitySet="Pokoje" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pokoje_StatusyPokoju" Association="Self.FK_Pokoje_StatusyPokoju">
+            <End Role="StatusyPokoju" EntitySet="StatusyPokoju" />
+            <End Role="Pokoje" EntitySet="Pokoje" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Posilki_Napoje" Association="Self.FK_Posilki_Napoje">
+            <End Role="Napoje" EntitySet="Napoje" />
+            <End Role="Posilki" EntitySet="Posilki" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Posilki_Potrawy" Association="Self.FK_Posilki_Potrawy">
+            <End Role="Potrawy" EntitySet="Potrawy" />
+            <End Role="Posilki" EntitySet="Posilki" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Potrawy_RodzajePotraw" Association="Self.FK_Potrawy_RodzajePotraw">
+            <End Role="RodzajePotraw" EntitySet="RodzajePotraw" />
+            <End Role="Potrawy" EntitySet="Potrawy" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PozycjeFaktury_Faktury" Association="Self.FK_PozycjeFaktury_Faktury">
+            <End Role="Faktury" EntitySet="Faktury" />
+            <End Role="PozycjeFaktury" EntitySet="PozycjeFaktury" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PozycjeFaktury_Uslugi" Association="Self.FK_PozycjeFaktury_Uslugi">
+            <End Role="Uslugi" EntitySet="Uslugi" />
+            <End Role="PozycjeFaktury" EntitySet="PozycjeFaktury" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pracownicy_Adresy" Association="Self.FK_Pracownicy_Adresy">
+            <End Role="Adresy" EntitySet="Adresy" />
+            <End Role="Pracownicy" EntitySet="Pracownicy" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Rezerwacje_Pokoje" Association="Self.FK_Rezerwacje_Pokoje">
+            <End Role="Pokoje" EntitySet="Pokoje" />
+            <End Role="Rezerwacje" EntitySet="Rezerwacje" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StanowiskaPracownikow_Pracownicy1" Association="Self.FK_StanowiskaPracownikow_Pracownicy1">
+            <End Role="Pracownicy" EntitySet="Pracownicy" />
+            <End Role="StanowiskaPracownikow" EntitySet="StanowiskaPracownikow" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StanowiskaPracownikow_Stanowiska" Association="Self.FK_StanowiskaPracownikow_Stanowiska">
+            <End Role="Stanowiska" EntitySet="Stanowiska" />
+            <End Role="StanowiskaPracownikow" EntitySet="StanowiskaPracownikow" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Uslugi_Posilki" Association="Self.FK_Uslugi_Posilki">
+            <End Role="Posilki" EntitySet="Posilki" />
+            <End Role="Uslugi" EntitySet="Uslugi" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Uslugi_Rezerwacje" Association="Self.FK_Uslugi_Rezerwacje">
+            <End Role="Rezerwacje" EntitySet="Rezerwacje" />
+            <End Role="Uslugi" EntitySet="Uslugi" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="HotelModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Adresy">
+          <Key>
+            <PropertyRef Name="IdAdresu" />
+          </Key>
+          <Property Name="IdAdresu" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Kraj" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Wojewodztwo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Miasto" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="KodPocztowy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Ulica" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NumerBudynku" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NumerLokalu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Fax" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Klienci" Relationship="Self.FK_Klienci_Adresy" FromRole="Adresy" ToRole="Klienci" />
+          <NavigationProperty Name="Pokoje" Relationship="Self.FK_Pokoje_Adresy" FromRole="Adresy" ToRole="Pokoje" />
+          <NavigationProperty Name="Pracownicy" Relationship="Self.FK_Pracownicy_Adresy" FromRole="Adresy" ToRole="Pracownicy" />
+        </EntityType>
+        <EntityType Name="Faktury">
+          <Key>
+            <PropertyRef Name="IdFaktury" />
+          </Key>
+          <Property Name="IdFaktury" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Numer" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DataWystawienia" Type="DateTime" Precision="0" />
+          <Property Name="IdKlienta" Type="Int32" />
+          <Property Name="TerminPlatnosci" Type="DateTime" Precision="0" />
+          <Property Name="IdSposobuPlatnosci" Type="Int32" />
+          <Property Name="IdPracownika" Type="Int32" />
+          <Property Name="DataSprzedazy" Type="DateTime" Precision="0" />
+          <Property Name="Zaplacono" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="DoZaplaty" Type="Decimal" Precision="18" Scale="0" />
+          <NavigationProperty Name="Klienci" Relationship="Self.FK_Faktury_Klienci" FromRole="Faktury" ToRole="Klienci" />
+          <NavigationProperty Name="Pracownicy" Relationship="Self.FK_Faktury_Pracownicy" FromRole="Faktury" ToRole="Pracownicy" />
+          <NavigationProperty Name="SposobyPlatnosci" Relationship="Self.FK_Faktury_SposobyPlatnosci" FromRole="Faktury" ToRole="SposobyPlatnosci" />
+          <NavigationProperty Name="PozycjeFaktury" Relationship="Self.FK_PozycjeFaktury_Faktury" FromRole="Faktury" ToRole="PozycjeFaktury" />
+        </EntityType>
+        <EntityType Name="Klienci">
+          <Key>
+            <PropertyRef Name="IdKlienta" />
+          </Key>
+          <Property Name="IdKlienta" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Imie" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Nazwisko" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Telefon" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="E_mail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IdRodzaju" Type="Int32" />
+          <Property Name="IdAdresu" Type="Int32" />
+          <Property Name="PESEL" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Plec" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DrugieImie" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Firma" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NIP" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="REGON" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Adresy" Relationship="Self.FK_Klienci_Adresy" FromRole="Klienci" ToRole="Adresy" />
+          <NavigationProperty Name="Faktury" Relationship="Self.FK_Faktury_Klienci" FromRole="Klienci" ToRole="Faktury" />
+          <NavigationProperty Name="RodzajeKlientow" Relationship="Self.FK_Klienci_RodzajeKlientow" FromRole="Klienci" ToRole="RodzajeKlientow" />
+        </EntityType>
+        <EntityType Name="Napoje">
+          <Key>
+            <PropertyRef Name="IdNapoju" />
+          </Key>
+          <Property Name="IdNapoju" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Sklad" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Cena" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="IdRodzajuNapoju" Type="Int32" />
+          <Property Name="Nazwa" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Opis" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="RodzajeNapojow" Relationship="Self.FK_Napoje_RodzajeNapojow" FromRole="Napoje" ToRole="RodzajeNapojow" />
+          <NavigationProperty Name="Posilki" Relationship="Self.FK_Posilki_Napoje" FromRole="Napoje" ToRole="Posilki" />
+        </EntityType>
+        <EntityType Name="Pokoje">
+          <Key>
+            <PropertyRef Name="IdPokoju" />
+          </Key>
+          <Property Name="IdPokoju" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NumerPokoju" Type="Int32" />
+          <Property Name="IdAdresu" Type="Int32" />
+          <Property Name="Pietro" Type="Int32" />
+          <Property Name="Nazwa" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Wysposazenie" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IdStatusu" Type="Int32" />
+          <Property Name="Cena" Type="Double" />
+          <Property Name="Rodzaj" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Adresy" Relationship="Self.FK_Pokoje_Adresy" FromRole="Pokoje" ToRole="Adresy" />
+          <NavigationProperty Name="StatusyPokoju" Relationship="Self.FK_Pokoje_StatusyPokoju" FromRole="Pokoje" ToRole="StatusyPokoju" />
+          <NavigationProperty Name="Rezerwacje" Relationship="Self.FK_Rezerwacje_Pokoje" FromRole="Pokoje" ToRole="Rezerwacje" />
+        </EntityType>
+        <EntityType Name="Posilki">
+          <Key>
+            <PropertyRef Name="IdPosilku" />
+          </Key>
+          <Property Name="IdPosilku" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdPotrawy" Type="Int32" />
+          <Property Name="IdNapoju" Type="Int32" />
+          <Property Name="IloscPotrawy" Type="Int32" />
+          <Property Name="IloscNapoju" Type="Int32" />
+          <Property Name="Opis" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Nazwa" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DataZamowienia" Type="DateTime" Precision="0" />
+          <Property Name="Netto" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Rabat" Type="Double" />
+          <Property Name="VAT" Type="Double" />
+          <Property Name="Brutto" Type="Decimal" Precision="18" Scale="0" />
+          <NavigationProperty Name="Napoje" Relationship="Self.FK_Posilki_Napoje" FromRole="Posilki" ToRole="Napoje" />
+          <NavigationProperty Name="Potrawy" Relationship="Self.FK_Posilki_Potrawy" FromRole="Posilki" ToRole="Potrawy" />
+          <NavigationProperty Name="Uslugi" Relationship="Self.FK_Uslugi_Posilki" FromRole="Posilki" ToRole="Uslugi" />
+        </EntityType>
+        <EntityType Name="Potrawy">
+          <Key>
+            <PropertyRef Name="IdPotrawy" />
+          </Key>
+          <Property Name="IdPotrawy" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Sklad" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Cena" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="IdRodzajuPotrawy" Type="Int32" />
+          <Property Name="Nazwa" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Opis" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Posilki" Relationship="Self.FK_Posilki_Potrawy" FromRole="Potrawy" ToRole="Posilki" />
+          <NavigationProperty Name="RodzajePotraw" Relationship="Self.FK_Potrawy_RodzajePotraw" FromRole="Potrawy" ToRole="RodzajePotraw" />
+        </EntityType>
+        <EntityType Name="PozycjeFaktury">
+          <Key>
+            <PropertyRef Name="IdPozycjiFaktury" />
+          </Key>
+          <Property Name="IdPozycjiFaktury" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdFaktury" Type="Int32" />
+          <Property Name="IdUslugi" Type="Int32" />
+          <Property Name="Cena" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Ilosc" Type="Int32" />
+          <Property Name="Rabat" Type="Decimal" Precision="18" Scale="0" />
+          <NavigationProperty Name="Faktury" Relationship="Self.FK_PozycjeFaktury_Faktury" FromRole="PozycjeFaktury" ToRole="Faktury" />
+          <NavigationProperty Name="Uslugi" Relationship="Self.FK_PozycjeFaktury_Uslugi" FromRole="PozycjeFaktury" ToRole="Uslugi" />
+        </EntityType>
+        <EntityType Name="Pracownicy">
+          <Key>
+            <PropertyRef Name="IdPracownika" />
+          </Key>
+          <Property Name="IdPracownika" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Imie" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Nazwisko" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IdAdresu" Type="Int32" />
+          <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Haslo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PESEL" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Telefon" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Wyplata" Type="Decimal" Precision="18" Scale="0" />
+          <NavigationProperty Name="Adresy" Relationship="Self.FK_Pracownicy_Adresy" FromRole="Pracownicy" ToRole="Adresy" />
+          <NavigationProperty Name="Faktury" Relationship="Self.FK_Faktury_Pracownicy" FromRole="Pracownicy" ToRole="Faktury" />
+          <NavigationProperty Name="StanowiskaPracownikow" Relationship="Self.FK_StanowiskaPracownikow_Pracownicy1" FromRole="Pracownicy" ToRole="StanowiskaPracownikow" />
+        </EntityType>
+        <EntityType Name="Rezerwacje">
+          <Key>
+            <PropertyRef Name="IdRezerwacji" />
+          </Key>
+          <Property Name="IdRezerwacji" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DataRozpoczecia" Type="DateTime" Precision="0" />
+          <Property Name="DataZakonczenia" Type="DateTime" Precision="0" />
+          <Property Name="IdPokoju" Type="Int32" />
+          <Property Name="Netto" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Rabat" Type="Double" />
+          <Property Name="VAT" Type="Double" />
+          <Property Name="Brutto" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="DoZaplaty" Type="Decimal" Precision="18" Scale="0" />
+          <NavigationProperty Name="Pokoje" Relationship="Self.FK_Rezerwacje_Pokoje" FromRole="Rezerwacje" ToRole="Pokoje" />
+          <NavigationProperty Name="Uslugi" Relationship="Self.FK_Uslugi_Rezerwacje" FromRole="Rezerwacje" ToRole="Uslugi" />
+        </EntityType>
+        <EntityType Name="RodzajeKlientow">
+          <Key>
+            <PropertyRef Name="IdRodzaju" />
+          </Key>
+          <Property Name="IdRodzaju" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nazwa" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Opis" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Klienci" Relationship="Self.FK_Klienci_RodzajeKlientow" FromRole="RodzajeKlientow" ToRole="Klienci" />
+        </EntityType>
+        <EntityType Name="RodzajeNapojow">
+          <Key>
+            <PropertyRef Name="IdRodzajuNapoju" />
+          </Key>
+          <Property Name="IdRodzajuNapoju" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nazwa" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Opis" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Napoje" Relationship="Self.FK_Napoje_RodzajeNapojow" FromRole="RodzajeNapojow" ToRole="Napoje" />
+        </EntityType>
+        <EntityType Name="RodzajePotraw">
+          <Key>
+            <PropertyRef Name="IdRodzajuPotrawy" />
+          </Key>
+          <Property Name="IdRodzajuPotrawy" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nazwa" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Opis" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Potrawy" Relationship="Self.FK_Potrawy_RodzajePotraw" FromRole="RodzajePotraw" ToRole="Potrawy" />
+        </EntityType>
+        <EntityType Name="SposobyPlatnosci">
+          <Key>
+            <PropertyRef Name="IdSposobuPlatnosci" />
+          </Key>
+          <Property Name="IdSposobuPlatnosci" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nazwa" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Opis" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Faktury" Relationship="Self.FK_Faktury_SposobyPlatnosci" FromRole="SposobyPlatnosci" ToRole="Faktury" />
+        </EntityType>
+        <EntityType Name="Stanowiska">
+          <Key>
+            <PropertyRef Name="IdStanowiska" />
+          </Key>
+          <Property Name="IdStanowiska" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nazwa" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Opis" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="StanowiskaPracownikow" Relationship="Self.FK_StanowiskaPracownikow_Stanowiska" FromRole="Stanowiska" ToRole="StanowiskaPracownikow" />
+        </EntityType>
+        <EntityType Name="StanowiskaPracownikow">
+          <Key>
+            <PropertyRef Name="IdStanowiskaPracownika" />
+          </Key>
+          <Property Name="IdStanowiskaPracownika" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdPracownika" Type="Int32" />
+          <Property Name="DataOd" Type="DateTime" Precision="0" />
+          <Property Name="DataDo" Type="DateTime" Precision="0" />
+          <Property Name="IdStanowiska" Type="Int32" />
+          <NavigationProperty Name="Pracownicy" Relationship="Self.FK_StanowiskaPracownikow_Pracownicy1" FromRole="StanowiskaPracownikow" ToRole="Pracownicy" />
+          <NavigationProperty Name="Stanowiska" Relationship="Self.FK_StanowiskaPracownikow_Stanowiska" FromRole="StanowiskaPracownikow" ToRole="Stanowiska" />
+        </EntityType>
+        <EntityType Name="StatusyPokoju">
+          <Key>
+            <PropertyRef Name="IdStatusu" />
+          </Key>
+          <Property Name="IdStatusu" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nazwa" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Opis" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Pokoje" Relationship="Self.FK_Pokoje_StatusyPokoju" FromRole="StatusyPokoju" ToRole="Pokoje" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Uslugi">
+          <Key>
+            <PropertyRef Name="IdUslugi" />
+          </Key>
+          <Property Name="IdUslugi" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Kod" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Nazwa" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IdPosilku" Type="Int32" />
+          <Property Name="IdRezerwacji" Type="Int32" />
+          <NavigationProperty Name="Posilki" Relationship="Self.FK_Uslugi_Posilki" FromRole="Uslugi" ToRole="Posilki" />
+          <NavigationProperty Name="PozycjeFaktury" Relationship="Self.FK_PozycjeFaktury_Uslugi" FromRole="Uslugi" ToRole="PozycjeFaktury" />
+          <NavigationProperty Name="Rezerwacje" Relationship="Self.FK_Uslugi_Rezerwacje" FromRole="Uslugi" ToRole="Rezerwacje" />
+        </EntityType>
+        <Association Name="FK_Klienci_Adresy">
+          <End Role="Adresy" Type="Self.Adresy" Multiplicity="0..1" />
+          <End Role="Klienci" Type="Self.Klienci" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Adresy">
+              <PropertyRef Name="IdAdresu" />
+            </Principal>
+            <Dependent Role="Klienci">
+              <PropertyRef Name="IdAdresu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pokoje_Adresy">
+          <End Role="Adresy" Type="Self.Adresy" Multiplicity="0..1" />
+          <End Role="Pokoje" Type="Self.Pokoje" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Adresy">
+              <PropertyRef Name="IdAdresu" />
+            </Principal>
+            <Dependent Role="Pokoje">
+              <PropertyRef Name="IdAdresu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pracownicy_Adresy">
+          <End Role="Adresy" Type="Self.Adresy" Multiplicity="0..1" />
+          <End Role="Pracownicy" Type="Self.Pracownicy" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Adresy">
+              <PropertyRef Name="IdAdresu" />
+            </Principal>
+            <Dependent Role="Pracownicy">
+              <PropertyRef Name="IdAdresu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Faktury_Klienci">
+          <End Role="Klienci" Type="Self.Klienci" Multiplicity="0..1" />
+          <End Role="Faktury" Type="Self.Faktury" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Klienci">
+              <PropertyRef Name="IdKlienta" />
+            </Principal>
+            <Dependent Role="Faktury">
+              <PropertyRef Name="IdKlienta" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Faktury_Pracownicy">
+          <End Role="Pracownicy" Type="Self.Pracownicy" Multiplicity="0..1" />
+          <End Role="Faktury" Type="Self.Faktury" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pracownicy">
+              <PropertyRef Name="IdPracownika" />
+            </Principal>
+            <Dependent Role="Faktury">
+              <PropertyRef Name="IdPracownika" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Faktury_SposobyPlatnosci">
+          <End Role="SposobyPlatnosci" Type="Self.SposobyPlatnosci" Multiplicity="0..1" />
+          <End Role="Faktury" Type="Self.Faktury" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SposobyPlatnosci">
+              <PropertyRef Name="IdSposobuPlatnosci" />
+            </Principal>
+            <Dependent Role="Faktury">
+              <PropertyRef Name="IdSposobuPlatnosci" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PozycjeFaktury_Faktury">
+          <End Role="Faktury" Type="Self.Faktury" Multiplicity="0..1" />
+          <End Role="PozycjeFaktury" Type="Self.PozycjeFaktury" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Faktury">
+              <PropertyRef Name="IdFaktury" />
+            </Principal>
+            <Dependent Role="PozycjeFaktury">
+              <PropertyRef Name="IdFaktury" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Klienci_RodzajeKlientow">
+          <End Role="RodzajeKlientow" Type="Self.RodzajeKlientow" Multiplicity="0..1" />
+          <End Role="Klienci" Type="Self.Klienci" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RodzajeKlientow">
+              <PropertyRef Name="IdRodzaju" />
+            </Principal>
+            <Dependent Role="Klienci">
+              <PropertyRef Name="IdRodzaju" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Napoje_RodzajeNapojow">
+          <End Role="RodzajeNapojow" Type="Self.RodzajeNapojow" Multiplicity="0..1" />
+          <End Role="Napoje" Type="Self.Napoje" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RodzajeNapojow">
+              <PropertyRef Name="IdRodzajuNapoju" />
+            </Principal>
+            <Dependent Role="Napoje">
+              <PropertyRef Name="IdRodzajuNapoju" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Posilki_Napoje">
+          <End Role="Napoje" Type="Self.Napoje" Multiplicity="0..1" />
+          <End Role="Posilki" Type="Self.Posilki" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Napoje">
+              <PropertyRef Name="IdNapoju" />
+            </Principal>
+            <Dependent Role="Posilki">
+              <PropertyRef Name="IdNapoju" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pokoje_StatusyPokoju">
+          <End Role="StatusyPokoju" Type="Self.StatusyPokoju" Multiplicity="0..1" />
+          <End Role="Pokoje" Type="Self.Pokoje" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StatusyPokoju">
+              <PropertyRef Name="IdStatusu" />
+            </Principal>
+            <Dependent Role="Pokoje">
+              <PropertyRef Name="IdStatusu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Rezerwacje_Pokoje">
+          <End Role="Pokoje" Type="Self.Pokoje" Multiplicity="0..1" />
+          <End Role="Rezerwacje" Type="Self.Rezerwacje" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pokoje">
+              <PropertyRef Name="IdPokoju" />
+            </Principal>
+            <Dependent Role="Rezerwacje">
+              <PropertyRef Name="IdPokoju" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Posilki_Potrawy">
+          <End Role="Potrawy" Type="Self.Potrawy" Multiplicity="0..1" />
+          <End Role="Posilki" Type="Self.Posilki" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Potrawy">
+              <PropertyRef Name="IdPotrawy" />
+            </Principal>
+            <Dependent Role="Posilki">
+              <PropertyRef Name="IdPotrawy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Uslugi_Posilki">
+          <End Role="Posilki" Type="Self.Posilki" Multiplicity="0..1" />
+          <End Role="Uslugi" Type="Self.Uslugi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Posilki">
+              <PropertyRef Name="IdPosilku" />
+            </Principal>
+            <Dependent Role="Uslugi">
+              <PropertyRef Name="IdPosilku" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Potrawy_RodzajePotraw">
+          <End Role="RodzajePotraw" Type="Self.RodzajePotraw" Multiplicity="0..1" />
+          <End Role="Potrawy" Type="Self.Potrawy" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RodzajePotraw">
+              <PropertyRef Name="IdRodzajuPotrawy" />
+            </Principal>
+            <Dependent Role="Potrawy">
+              <PropertyRef Name="IdRodzajuPotrawy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PozycjeFaktury_Uslugi">
+          <End Role="Uslugi" Type="Self.Uslugi" Multiplicity="0..1" />
+          <End Role="PozycjeFaktury" Type="Self.PozycjeFaktury" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Uslugi">
+              <PropertyRef Name="IdUslugi" />
+            </Principal>
+            <Dependent Role="PozycjeFaktury">
+              <PropertyRef Name="IdUslugi" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StanowiskaPracownikow_Pracownicy1">
+          <End Role="Pracownicy" Type="Self.Pracownicy" Multiplicity="0..1" />
+          <End Role="StanowiskaPracownikow" Type="Self.StanowiskaPracownikow" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pracownicy">
+              <PropertyRef Name="IdPracownika" />
+            </Principal>
+            <Dependent Role="StanowiskaPracownikow">
+              <PropertyRef Name="IdPracownika" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Uslugi_Rezerwacje">
+          <End Role="Rezerwacje" Type="Self.Rezerwacje" Multiplicity="0..1" />
+          <End Role="Uslugi" Type="Self.Uslugi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Rezerwacje">
+              <PropertyRef Name="IdRezerwacji" />
+            </Principal>
+            <Dependent Role="Uslugi">
+              <PropertyRef Name="IdRezerwacji" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StanowiskaPracownikow_Stanowiska">
+          <End Role="Stanowiska" Type="Self.Stanowiska" Multiplicity="0..1" />
+          <End Role="StanowiskaPracownikow" Type="Self.StanowiskaPracownikow" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Stanowiska">
+              <PropertyRef Name="IdStanowiska" />
+            </Principal>
+            <Dependent Role="StanowiskaPracownikow">
+              <PropertyRef Name="IdStanowiska" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="HotelEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Adresy" EntityType="Self.Adresy" />
+          <EntitySet Name="Faktury" EntityType="Self.Faktury" />
+          <EntitySet Name="Klienci" EntityType="Self.Klienci" />
+          <EntitySet Name="Napoje" EntityType="Self.Napoje" />
+          <EntitySet Name="Pokoje" EntityType="Self.Pokoje" />
+          <EntitySet Name="Posilki" EntityType="Self.Posilki" />
+          <EntitySet Name="Potrawy" EntityType="Self.Potrawy" />
+          <EntitySet Name="PozycjeFaktury" EntityType="Self.PozycjeFaktury" />
+          <EntitySet Name="Pracownicy" EntityType="Self.Pracownicy" />
+          <EntitySet Name="Rezerwacje" EntityType="Self.Rezerwacje" />
+          <EntitySet Name="RodzajeKlientow" EntityType="Self.RodzajeKlientow" />
+          <EntitySet Name="RodzajeNapojow" EntityType="Self.RodzajeNapojow" />
+          <EntitySet Name="RodzajePotraw" EntityType="Self.RodzajePotraw" />
+          <EntitySet Name="SposobyPlatnosci" EntityType="Self.SposobyPlatnosci" />
+          <EntitySet Name="Stanowiska" EntityType="Self.Stanowiska" />
+          <EntitySet Name="StanowiskaPracownikow" EntityType="Self.StanowiskaPracownikow" />
+          <EntitySet Name="StatusyPokoju" EntityType="Self.StatusyPokoju" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="Uslugi" EntityType="Self.Uslugi" />
+          <AssociationSet Name="FK_Klienci_Adresy" Association="Self.FK_Klienci_Adresy">
+            <End Role="Adresy" EntitySet="Adresy" />
+            <End Role="Klienci" EntitySet="Klienci" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pokoje_Adresy" Association="Self.FK_Pokoje_Adresy">
+            <End Role="Adresy" EntitySet="Adresy" />
+            <End Role="Pokoje" EntitySet="Pokoje" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pracownicy_Adresy" Association="Self.FK_Pracownicy_Adresy">
+            <End Role="Adresy" EntitySet="Adresy" />
+            <End Role="Pracownicy" EntitySet="Pracownicy" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Faktury_Klienci" Association="Self.FK_Faktury_Klienci">
+            <End Role="Klienci" EntitySet="Klienci" />
+            <End Role="Faktury" EntitySet="Faktury" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Faktury_Pracownicy" Association="Self.FK_Faktury_Pracownicy">
+            <End Role="Pracownicy" EntitySet="Pracownicy" />
+            <End Role="Faktury" EntitySet="Faktury" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Faktury_SposobyPlatnosci" Association="Self.FK_Faktury_SposobyPlatnosci">
+            <End Role="SposobyPlatnosci" EntitySet="SposobyPlatnosci" />
+            <End Role="Faktury" EntitySet="Faktury" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PozycjeFaktury_Faktury" Association="Self.FK_PozycjeFaktury_Faktury">
+            <End Role="Faktury" EntitySet="Faktury" />
+            <End Role="PozycjeFaktury" EntitySet="PozycjeFaktury" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Klienci_RodzajeKlientow" Association="Self.FK_Klienci_RodzajeKlientow">
+            <End Role="RodzajeKlientow" EntitySet="RodzajeKlientow" />
+            <End Role="Klienci" EntitySet="Klienci" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Napoje_RodzajeNapojow" Association="Self.FK_Napoje_RodzajeNapojow">
+            <End Role="RodzajeNapojow" EntitySet="RodzajeNapojow" />
+            <End Role="Napoje" EntitySet="Napoje" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Posilki_Napoje" Association="Self.FK_Posilki_Napoje">
+            <End Role="Napoje" EntitySet="Napoje" />
+            <End Role="Posilki" EntitySet="Posilki" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pokoje_StatusyPokoju" Association="Self.FK_Pokoje_StatusyPokoju">
+            <End Role="StatusyPokoju" EntitySet="StatusyPokoju" />
+            <End Role="Pokoje" EntitySet="Pokoje" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Rezerwacje_Pokoje" Association="Self.FK_Rezerwacje_Pokoje">
+            <End Role="Pokoje" EntitySet="Pokoje" />
+            <End Role="Rezerwacje" EntitySet="Rezerwacje" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Posilki_Potrawy" Association="Self.FK_Posilki_Potrawy">
+            <End Role="Potrawy" EntitySet="Potrawy" />
+            <End Role="Posilki" EntitySet="Posilki" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Uslugi_Posilki" Association="Self.FK_Uslugi_Posilki">
+            <End Role="Posilki" EntitySet="Posilki" />
+            <End Role="Uslugi" EntitySet="Uslugi" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Potrawy_RodzajePotraw" Association="Self.FK_Potrawy_RodzajePotraw">
+            <End Role="RodzajePotraw" EntitySet="RodzajePotraw" />
+            <End Role="Potrawy" EntitySet="Potrawy" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PozycjeFaktury_Uslugi" Association="Self.FK_PozycjeFaktury_Uslugi">
+            <End Role="Uslugi" EntitySet="Uslugi" />
+            <End Role="PozycjeFaktury" EntitySet="PozycjeFaktury" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StanowiskaPracownikow_Pracownicy1" Association="Self.FK_StanowiskaPracownikow_Pracownicy1">
+            <End Role="Pracownicy" EntitySet="Pracownicy" />
+            <End Role="StanowiskaPracownikow" EntitySet="StanowiskaPracownikow" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Uslugi_Rezerwacje" Association="Self.FK_Uslugi_Rezerwacje">
+            <End Role="Rezerwacje" EntitySet="Rezerwacje" />
+            <End Role="Uslugi" EntitySet="Uslugi" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StanowiskaPracownikow_Stanowiska" Association="Self.FK_StanowiskaPracownikow_Stanowiska">
+            <End Role="Stanowiska" EntitySet="Stanowiska" />
+            <End Role="StanowiskaPracownikow" EntitySet="StanowiskaPracownikow" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="HotelModelStoreContainer" CdmEntityContainer="HotelEntities">
+          <EntitySetMapping Name="Adresy">
+            <EntityTypeMapping TypeName="HotelModel.Adresy">
+              <MappingFragment StoreEntitySet="Adresy">
+                <ScalarProperty Name="IdAdresu" ColumnName="IdAdresu" />
+                <ScalarProperty Name="Kraj" ColumnName="Kraj" />
+                <ScalarProperty Name="Wojewodztwo" ColumnName="Wojewodztwo" />
+                <ScalarProperty Name="Miasto" ColumnName="Miasto" />
+                <ScalarProperty Name="KodPocztowy" ColumnName="KodPocztowy" />
+                <ScalarProperty Name="Ulica" ColumnName="Ulica" />
+                <ScalarProperty Name="NumerBudynku" ColumnName="NumerBudynku" />
+                <ScalarProperty Name="NumerLokalu" ColumnName="NumerLokalu" />
+                <ScalarProperty Name="Fax" ColumnName="Fax" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Faktury">
+            <EntityTypeMapping TypeName="HotelModel.Faktury">
+              <MappingFragment StoreEntitySet="Faktury">
+                <ScalarProperty Name="IdFaktury" ColumnName="IdFaktury" />
+                <ScalarProperty Name="Numer" ColumnName="Numer" />
+                <ScalarProperty Name="DataWystawienia" ColumnName="DataWystawienia" />
+                <ScalarProperty Name="IdKlienta" ColumnName="IdKlienta" />
+                <ScalarProperty Name="TerminPlatnosci" ColumnName="TerminPlatnosci" />
+                <ScalarProperty Name="IdSposobuPlatnosci" ColumnName="IdSposobuPlatnosci" />
+                <ScalarProperty Name="IdPracownika" ColumnName="IdPracownika" />
+                <ScalarProperty Name="DataSprzedazy" ColumnName="DataSprzedazy" />
+                <ScalarProperty Name="Zaplacono" ColumnName="Zaplacono" />
+                <ScalarProperty Name="DoZaplaty" ColumnName="DoZaplaty" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Klienci">
+            <EntityTypeMapping TypeName="HotelModel.Klienci">
+              <MappingFragment StoreEntitySet="Klienci">
+                <ScalarProperty Name="IdKlienta" ColumnName="IdKlienta" />
+                <ScalarProperty Name="Imie" ColumnName="Imie" />
+                <ScalarProperty Name="Nazwisko" ColumnName="Nazwisko" />
+                <ScalarProperty Name="Telefon" ColumnName="Telefon" />
+                <ScalarProperty Name="E_mail" ColumnName="E-mail" />
+                <ScalarProperty Name="IdRodzaju" ColumnName="IdRodzaju" />
+                <ScalarProperty Name="IdAdresu" ColumnName="IdAdresu" />
+                <ScalarProperty Name="PESEL" ColumnName="PESEL" />
+                <ScalarProperty Name="Plec" ColumnName="Plec" />
+                <ScalarProperty Name="DrugieImie" ColumnName="DrugieImie" />
+                <ScalarProperty Name="Firma" ColumnName="Firma" />
+                <ScalarProperty Name="NIP" ColumnName="NIP" />
+                <ScalarProperty Name="REGON" ColumnName="REGON" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Napoje">
+            <EntityTypeMapping TypeName="HotelModel.Napoje">
+              <MappingFragment StoreEntitySet="Napoje">
+                <ScalarProperty Name="IdNapoju" ColumnName="IdNapoju" />
+                <ScalarProperty Name="Sklad" ColumnName="Sklad" />
+                <ScalarProperty Name="Cena" ColumnName="Cena" />
+                <ScalarProperty Name="IdRodzajuNapoju" ColumnName="IdRodzajuNapoju" />
+                <ScalarProperty Name="Nazwa" ColumnName="Nazwa" />
+                <ScalarProperty Name="Opis" ColumnName="Opis" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pokoje">
+            <EntityTypeMapping TypeName="HotelModel.Pokoje">
+              <MappingFragment StoreEntitySet="Pokoje">
+                <ScalarProperty Name="IdPokoju" ColumnName="IdPokoju" />
+                <ScalarProperty Name="NumerPokoju" ColumnName="NumerPokoju" />
+                <ScalarProperty Name="IdAdresu" ColumnName="IdAdresu" />
+                <ScalarProperty Name="Pietro" ColumnName="Pietro" />
+                <ScalarProperty Name="Nazwa" ColumnName="Nazwa" />
+                <ScalarProperty Name="Wysposazenie" ColumnName="Wysposazenie" />
+                <ScalarProperty Name="IdStatusu" ColumnName="IdStatusu" />
+                <ScalarProperty Name="Cena" ColumnName="Cena" />
+                <ScalarProperty Name="Rodzaj" ColumnName="Rodzaj" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Posilki">
+            <EntityTypeMapping TypeName="HotelModel.Posilki">
+              <MappingFragment StoreEntitySet="Posilki">
+                <ScalarProperty Name="IdPosilku" ColumnName="IdPosilku" />
+                <ScalarProperty Name="IdPotrawy" ColumnName="IdPotrawy" />
+                <ScalarProperty Name="IdNapoju" ColumnName="IdNapoju" />
+                <ScalarProperty Name="IloscPotrawy" ColumnName="IloscPotrawy" />
+                <ScalarProperty Name="IloscNapoju" ColumnName="IloscNapoju" />
+                <ScalarProperty Name="Opis" ColumnName="Opis" />
+                <ScalarProperty Name="Nazwa" ColumnName="Nazwa" />
+                <ScalarProperty Name="DataZamowienia" ColumnName="DataZamowienia" />
+                <ScalarProperty Name="Netto" ColumnName="Netto" />
+                <ScalarProperty Name="Rabat" ColumnName="Rabat" />
+                <ScalarProperty Name="VAT" ColumnName="VAT" />
+                <ScalarProperty Name="Brutto" ColumnName="Brutto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Potrawy">
+            <EntityTypeMapping TypeName="HotelModel.Potrawy">
+              <MappingFragment StoreEntitySet="Potrawy">
+                <ScalarProperty Name="IdPotrawy" ColumnName="IdPotrawy" />
+                <ScalarProperty Name="Sklad" ColumnName="Sklad" />
+                <ScalarProperty Name="Cena" ColumnName="Cena" />
+                <ScalarProperty Name="IdRodzajuPotrawy" ColumnName="IdRodzajuPotrawy" />
+                <ScalarProperty Name="Nazwa" ColumnName="Nazwa" />
+                <ScalarProperty Name="Opis" ColumnName="Opis" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PozycjeFaktury">
+            <EntityTypeMapping TypeName="HotelModel.PozycjeFaktury">
+              <MappingFragment StoreEntitySet="PozycjeFaktury">
+                <ScalarProperty Name="IdPozycjiFaktury" ColumnName="IdPozycjiFaktury" />
+                <ScalarProperty Name="IdFaktury" ColumnName="IdFaktury" />
+                <ScalarProperty Name="IdUslugi" ColumnName="IdUslugi" />
+                <ScalarProperty Name="Cena" ColumnName="Cena" />
+                <ScalarProperty Name="Ilosc" ColumnName="Ilosc" />
+                <ScalarProperty Name="Rabat" ColumnName="Rabat" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pracownicy">
+            <EntityTypeMapping TypeName="HotelModel.Pracownicy">
+              <MappingFragment StoreEntitySet="Pracownicy">
+                <ScalarProperty Name="IdPracownika" ColumnName="IdPracownika" />
+                <ScalarProperty Name="Imie" ColumnName="Imie" />
+                <ScalarProperty Name="Nazwisko" ColumnName="Nazwisko" />
+                <ScalarProperty Name="IdAdresu" ColumnName="IdAdresu" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="Haslo" ColumnName="Haslo" />
+                <ScalarProperty Name="PESEL" ColumnName="PESEL" />
+                <ScalarProperty Name="Telefon" ColumnName="Telefon" />
+                <ScalarProperty Name="Wyplata" ColumnName="Wyplata" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Rezerwacje">
+            <EntityTypeMapping TypeName="HotelModel.Rezerwacje">
+              <MappingFragment StoreEntitySet="Rezerwacje">
+                <ScalarProperty Name="IdRezerwacji" ColumnName="IdRezerwacji" />
+                <ScalarProperty Name="DataRozpoczecia" ColumnName="DataRozpoczecia" />
+                <ScalarProperty Name="DataZakonczenia" ColumnName="DataZakonczenia" />
+                <ScalarProperty Name="IdPokoju" ColumnName="IdPokoju" />
+                <ScalarProperty Name="Netto" ColumnName="Netto" />
+                <ScalarProperty Name="Rabat" ColumnName="Rabat" />
+                <ScalarProperty Name="VAT" ColumnName="VAT" />
+                <ScalarProperty Name="Brutto" ColumnName="Brutto" />
+                <ScalarProperty Name="DoZaplaty" ColumnName="DoZaplaty" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RodzajeKlientow">
+            <EntityTypeMapping TypeName="HotelModel.RodzajeKlientow">
+              <MappingFragment StoreEntitySet="RodzajeKlientow">
+                <ScalarProperty Name="IdRodzaju" ColumnName="IdRodzaju" />
+                <ScalarProperty Name="Nazwa" ColumnName="Nazwa" />
+                <ScalarProperty Name="Opis" ColumnName="Opis" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RodzajeNapojow">
+            <EntityTypeMapping TypeName="HotelModel.RodzajeNapojow">
+              <MappingFragment StoreEntitySet="RodzajeNapojow">
+                <ScalarProperty Name="IdRodzajuNapoju" ColumnName="IdRodzajuNapoju" />
+                <ScalarProperty Name="Nazwa" ColumnName="Nazwa" />
+                <ScalarProperty Name="Opis" ColumnName="Opis" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RodzajePotraw">
+            <EntityTypeMapping TypeName="HotelModel.RodzajePotraw">
+              <MappingFragment StoreEntitySet="RodzajePotraw">
+                <ScalarProperty Name="IdRodzajuPotrawy" ColumnName="IdRodzajuPotrawy" />
+                <ScalarProperty Name="Nazwa" ColumnName="Nazwa" />
+                <ScalarProperty Name="Opis" ColumnName="Opis" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SposobyPlatnosci">
+            <EntityTypeMapping TypeName="HotelModel.SposobyPlatnosci">
+              <MappingFragment StoreEntitySet="SposobyPlatnosci">
+                <ScalarProperty Name="IdSposobuPlatnosci" ColumnName="IdSposobuPlatnosci" />
+                <ScalarProperty Name="Nazwa" ColumnName="Nazwa" />
+                <ScalarProperty Name="Opis" ColumnName="Opis" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Stanowiska">
+            <EntityTypeMapping TypeName="HotelModel.Stanowiska">
+              <MappingFragment StoreEntitySet="Stanowiska">
+                <ScalarProperty Name="IdStanowiska" ColumnName="IdStanowiska" />
+                <ScalarProperty Name="Nazwa" ColumnName="Nazwa" />
+                <ScalarProperty Name="Opis" ColumnName="Opis" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StanowiskaPracownikow">
+            <EntityTypeMapping TypeName="HotelModel.StanowiskaPracownikow">
+              <MappingFragment StoreEntitySet="StanowiskaPracownikow">
+                <ScalarProperty Name="IdStanowiskaPracownika" ColumnName="IdStanowiskaPracownika" />
+                <ScalarProperty Name="IdPracownika" ColumnName="IdPracownika" />
+                <ScalarProperty Name="DataOd" ColumnName="DataOd" />
+                <ScalarProperty Name="DataDo" ColumnName="DataDo" />
+                <ScalarProperty Name="IdStanowiska" ColumnName="IdStanowiska" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StatusyPokoju">
+            <EntityTypeMapping TypeName="HotelModel.StatusyPokoju">
+              <MappingFragment StoreEntitySet="StatusyPokoju">
+                <ScalarProperty Name="IdStatusu" ColumnName="IdStatusu" />
+                <ScalarProperty Name="Nazwa" ColumnName="Nazwa" />
+                <ScalarProperty Name="Opis" ColumnName="Opis" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="HotelModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Uslugi">
+            <EntityTypeMapping TypeName="HotelModel.Uslugi">
+              <MappingFragment StoreEntitySet="Uslugi">
+                <ScalarProperty Name="IdUslugi" ColumnName="IdUslugi" />
+                <ScalarProperty Name="Kod" ColumnName="Kod" />
+                <ScalarProperty Name="Nazwa" ColumnName="Nazwa" />
+                <ScalarProperty Name="IdPosilku" ColumnName="IdPosilku" />
+                <ScalarProperty Name="IdRezerwacji" ColumnName="IdRezerwacji" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

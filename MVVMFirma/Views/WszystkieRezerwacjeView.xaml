@@ -1,0 +1,33 @@
+﻿<local:WszystkieViewBaseZDedykowanymFiltrowaniem x:Class="MVVMFirma.Views.WszystkieRezerwacjeView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:MVVMFirma.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+
+    <UserControl.Resources>
+        <ResourceDictionary Source="StyleZakladek.xaml"  />
+    </UserControl.Resources>
+    
+    <Grid>
+        <DataGrid AutoGenerateColumns="False" ItemsSource="{Binding  List}" SelectedItem="{Binding WybranaRezerwacja,Mode=TwoWay}"
+            AlternatingRowBackground="LightGray" Margin="30,10,40,80"  FontSize="14" MinRowHeight="30" HorizontalGridLinesBrush="Transparent" VerticalGridLinesBrush="Transparent"
+            ColumnHeaderHeight="30"  MinColumnWidth="130" BorderBrush="Transparent" Background="White" ColumnHeaderStyle="{StaticResource desk_dataGridheader}">
+            <DataGrid.Columns>
+                <DataGridTextColumn ElementStyle="{StaticResource desk_dataGridRows}" Header="Numer pokoju" Binding="{Binding NumerPokoju}"/>
+                <DataGridTextColumn ElementStyle="{StaticResource desk_dataGridRows}" MaxWidth="80" Header="Piętro" Binding="{Binding Pietro}"/>
+                <DataGridTextColumn ElementStyle="{StaticResource desk_dataGridRows}" Header="Typ pokoju" Binding="{Binding TypPokoju}"/>
+                <DataGridTextColumn ElementStyle="{StaticResource desk_dataGridRows}" Header="Data Rozpoczęcia" Binding="{Binding DataRozpoczecia, StringFormat={}{0:MM/dd/yyyy}}"/>
+                <DataGridTextColumn ElementStyle="{StaticResource desk_dataGridRows}" Header="Data Zakończenia" Binding="{Binding DataZakonczenia, StringFormat={}{0:MM/dd/yyyy}}"/>
+                <DataGridTextColumn ElementStyle="{StaticResource desk_dataGridRows}" Header="Netto" Binding="{Binding Netto}"/>
+                <DataGridTextColumn ElementStyle="{StaticResource desk_dataGridRows}" MaxWidth="70" Header="VAT" Binding="{Binding VAT}"/>
+                <DataGridTextColumn ElementStyle="{StaticResource desk_dataGridRows}" MaxWidth="80" Header="Rabat" Binding="{Binding Rabat}"/>
+                <DataGridTextColumn ElementStyle="{StaticResource desk_dataGridRows}" Header="Brutto" Binding="{Binding Brutto}"/>
+                <DataGridTextColumn ElementStyle="{StaticResource desk_dataGridRows}" Header="Adres budynku" Binding="{Binding AdresPokoju}"/>
+                <DataGridTextColumn ElementStyle="{StaticResource desk_dataGridRows}" Header="Wyposażenie" Binding="{Binding Wyposazenie}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</local:WszystkieViewBaseZDedykowanymFiltrowaniem>

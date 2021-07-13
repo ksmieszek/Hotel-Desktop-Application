@@ -1,0 +1,195 @@
+<ResourceDictionary 
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:MVVMFirma.Views">
+
+    <Style TargetType="{x:Type local:WszystkieViewBase}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type local:WszystkieViewBase}">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="70"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <StackPanel Grid.Row="0" Margin="0,20">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="30" />
+                                    <ColumnDefinition Width="80" />
+                                    <ColumnDefinition Width="20" />
+                                    <ColumnDefinition Width="80" />
+                                    <ColumnDefinition Width="20" />
+                                    <ColumnDefinition Width="80" />
+                                    <ColumnDefinition Width="20" />
+                                    <ColumnDefinition Width="80" />
+                                </Grid.ColumnDefinitions>
+
+                                <Border Grid.Column="1" CornerRadius="5" BorderThickness="2"
+                                                BorderBrush="Green" Background="White" >
+                                    <ToggleButton Content="Add"  Command="{Binding AddCommand}" Height="25"  Margin="0.7" Background="Transparent"  Foreground="Green" 
+                                                          FontSize="14"  BorderThickness="0"/>
+                                </Border>
+
+                                <Border Grid.Column="3" CornerRadius="5" BorderThickness="2"
+                                                BorderBrush="#21a8ea" Background="White" >
+                                    <ToggleButton Content="Edit" Height="25"  Margin="0.7" Background="Transparent"  Foreground="#21a8ea" 
+                                                          FontSize="14"  BorderThickness="0"/>
+                                </Border>
+
+                                <Border Grid.Column="5" CornerRadius="5" BorderThickness="2"
+                                                BorderBrush="red" Background="white" >
+                                    <ToggleButton Content="Delete" Height="25"  Margin="0.7" Background="Transparent"  Foreground="red" 
+                                                          FontSize="14"  BorderThickness="0"  />
+                                </Border>
+
+                                <Border Grid.Column="7" CornerRadius="5" BorderThickness="2"
+                                                BorderBrush="Orange" Background="white" >
+                                    <ToggleButton Content="Refresh"  Command="{Binding UpdateCommand}" Height="25"  Margin="0.7" Background="Transparent"  Foreground="Orange" 
+                                                          FontSize="14"  BorderThickness="0"  />
+                                </Border>
+                            </Grid>
+                        </StackPanel>
+
+                        <ContentPresenter Grid.Row="1" Margin="0,5,0,5"/>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="{x:Type local:JedenViewBase}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type local:JedenViewBase}">
+                    <Grid Margin="0,10,0,0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="140"/>
+                        </Grid.RowDefinitions>
+                        <StackPanel Grid.Row="1" Margin="0,80,350,0"  HorizontalAlignment="Right">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="80" />
+                                    <ColumnDefinition Width="20" />
+                                    <ColumnDefinition Width="80" />
+                                </Grid.ColumnDefinitions>
+                                <Border Grid.Column="0" CornerRadius="5" BorderThickness="2"
+                                        BorderBrush="red" Background="white" >
+                                    <ToggleButton Content="Anuluj" Command="{Binding CancelCommand}" Height="30"  Margin="0.7" Background="Transparent"  Foreground="red" 
+                                                  FontSize="14"  BorderThickness="0"/>
+                                </Border>
+                                
+                                <Border Grid.Column="2"  CornerRadius="5" BorderThickness="2"
+                                        BorderBrush="Green" Background="White" >
+                                    <ToggleButton Content="Zapisz"  Command="{Binding SaveCommand}" Height="30"  Margin="0.7" Background="Transparent"  Foreground="Green" 
+                                                  FontSize="14"  BorderThickness="0"/>
+                                </Border>
+                            </Grid>
+                        </StackPanel>
+                        <ContentPresenter Grid.Row="0" Margin="0,5,0,5"/>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="{x:Type local:WszystkieViewBaseZDedykowanymFiltrowaniem}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type local:WszystkieViewBaseZDedykowanymFiltrowaniem}">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="70"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <StackPanel Grid.Row="0" Margin="0,20">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="30" />
+                                    <ColumnDefinition Width="80" />
+                                    <ColumnDefinition Width="20" />
+                                    <ColumnDefinition Width="80" />
+                                    <ColumnDefinition Width="20" />
+                                    <ColumnDefinition Width="80" />
+                                    <ColumnDefinition Width="20" />
+                                    <ColumnDefinition Width="80" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+
+                                <Border Grid.Column="1" CornerRadius="5" BorderThickness="2"
+                                                BorderBrush="Green" Background="White" >
+                                    <ToggleButton Content="Add"  Command="{Binding AddCommand}" Height="25"  Margin="0.5" Background="Transparent"  Foreground="Green" 
+                                                          FontSize="14"  BorderThickness="0"/>
+                                </Border>
+
+                                <Border Grid.Column="3" CornerRadius="5" BorderThickness="2"
+                                                BorderBrush="#21a8ea" Background="White" >
+                                    <ToggleButton Content="Edit" Height="25"  Margin="0.5" Background="Transparent"  Foreground="#21a8ea" 
+                                                          FontSize="14"  BorderThickness="0"/>
+                                </Border>
+
+                                <Border Grid.Column="5" CornerRadius="5" BorderThickness="2"
+                                                BorderBrush="red" Background="white" >
+                                    <ToggleButton Content="Delete" Height="25"  Margin="0.5" Background="Transparent"  Foreground="red" 
+                                                          FontSize="14"  BorderThickness="0"  />
+                                </Border>
+
+                                <Border Grid.Column="7" CornerRadius="5" BorderThickness="2"
+                                                BorderBrush="Orange" Background="white">
+                                    <ToggleButton Content="Refresh"  Command="{Binding UpdateCommand}" Height="25"  Margin="0.5" Background="Transparent"  Foreground="Orange" 
+                                                          FontSize="14"  BorderThickness="0"  />
+                                </Border>
+
+                                <StackPanel Grid.Column="9"  HorizontalAlignment="Right" Margin="0,0,40,0">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="180" />
+                                            <ColumnDefinition Width="5" />
+                                            <ColumnDefinition Width="60" />
+                                            <ColumnDefinition Width="100" />
+                                            <ColumnDefinition Width="180" />
+                                            <ColumnDefinition Width="5" />
+                                            <ColumnDefinition Width="150" />
+                                            <ColumnDefinition Width="5" />
+                                            <ColumnDefinition Width="60" />
+                                        </Grid.ColumnDefinitions>
+
+                                        <Border Grid.Column="0" CornerRadius="5" BorderThickness="1"  BorderBrush="Gray"  Height="28" >
+                                            <ComboBox  VerticalContentAlignment="Center" BorderThickness="0" Margin="0.7"  ItemsSource="{Binding SortComboboxItems}" SelectedValue="{Binding SortField}"/>
+                                        </Border>
+
+                                        <Border Grid.Column="2" CornerRadius="2" BorderThickness="1"
+                                                BorderBrush="black" Background="white"  Height="26">
+                                            <ToggleButton Content="Sortuj"  Command="{Binding SortCommand}" Margin="0" Height="26"  Background="LightGray"  Foreground="black" 
+                                                          FontSize="14"  BorderThickness="0" VerticalAlignment="Center" />
+                                        </Border>
+
+                                        <Border Grid.Column="4" CornerRadius="5" BorderThickness="1"  BorderBrush="Gray" Height="28" >
+                                            <ComboBox VerticalContentAlignment="Center" BorderThickness="0" Margin="0.7" ItemsSource="{Binding FindComboboxItems}" SelectedValue="{Binding FindField}"/>
+                                        </Border>
+
+                                        <Border Grid.Column="6" CornerRadius="5" BorderThickness="1"  BorderBrush="Gray" Height="28">
+                                            <TextBox Width="150" Height="30" Margin="1" FontSize="12" HorizontalAlignment="Center" VerticalAlignment="Center" VerticalContentAlignment="Center" FontFamily="Verdana" BorderThickness="0" Padding="3" Text="{Binding FindTextBox}"/>
+                                        </Border>
+
+                                        <Border Grid.Column="8" CornerRadius="2" BorderThickness="1"
+                                                BorderBrush="black" Background="white"  Height="26">
+                                            <ToggleButton Content="Szukaj"  Command="{Binding FindCommand}" Margin="0" Height="26" Background="LightGray"  Foreground="black" 
+                                                          FontSize="14"  BorderThickness="0" VerticalAlignment="Center" />
+                                        </Border>
+
+                                    </Grid>
+                                </StackPanel>
+                            </Grid>
+                        </StackPanel>
+
+                        <ContentPresenter Grid.Row="1" Margin="0,5,0,5"/>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

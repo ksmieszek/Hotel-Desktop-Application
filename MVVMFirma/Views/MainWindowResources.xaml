@@ -1,0 +1,367 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:vm="clr-namespace:MVVMFirma.ViewModels"
+                    xmlns:vw="clr-namespace:MVVMFirma.Views"
+                    >
+
+
+
+    <DataTemplate DataType="{x:Type vm:GrafikViewModel}">
+        <vw:GrafikView/>
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:StatystykiViewModel}">
+        <vw:StatystykiView/>
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:EmailViewModel}">
+        <vw:EmailView/>
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:NoweStanowiskoViewModel}">
+        <vw:NoweStanowiskoView/>
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:NowyRodzajNapojowViewModel}">
+        <vw:NowyRodzajNapojowView/>
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:NowyRodzajPotrawViewModel}">
+        <vw:NowyRodzajPotrawView/>
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:NowyStatusPokojuViewModel}">
+        <vw:NowyStatusPokojuView/>
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:NowySposobPlatnosciViewModel}">
+        <vw:NowySposobPlatnosciView/>
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:NowyRodzajKlientowViewModel}">
+        <vw:NowyRodzajKlientowView/>
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:NowyPracownikViewModel}">
+        <vw:NowyPracownikView/>
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:WszystkieStatusyPokojuViewModel}">
+        <vw:WszystkieStatusyPokojuView/>
+    </DataTemplate>
+    
+    <DataTemplate DataType="{x:Type vm:WszystkieRodzajeNapojowViewModel}">
+        <vw:WszystkieRodzajeNapojowView/>
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:WszystkieRodzajePotrawViewModel}">
+        <vw:WszystkieRodzajePotrawView/>
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:WszystkieSposobyPlatnosciViewModel}">
+        <vw:WszystkieSposobyPlatnosciView/>
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:WszystkieRodzajeKlientowViewModel}">
+        <vw:WszystkieRodzajeKlientowView/>
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:WszystkieStanowiskaViewModel}">
+        <vw:WszystkieStanowiskaView/>
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:WszyscyPracownicyViewModel}">
+        <vw:WszyscyPracownicyView/>
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:WszystkieFakturyViewModel}">
+        <vw:WszystkieFakturyView/>
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:WszyscyKlienciViewModel}">
+        <vw:WszyscyKlienciView/>
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:WszystkieNapojeViewModel}">
+        <vw:WszystkieNapojeView/>
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:WszystkiePokojeViewModel}">
+        <vw:WszystkiePokojeView/>
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:WszystkiePosilkiViewModel}">
+        <vw:WszystkiePosilkiView/>
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:WszystkiePotrawyViewModel}">
+        <vw:WszystkiePotrawyView/>
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:WszystkiePozycjeFakturyViewModel}">
+        <vw:WszystkiePozycjeFakturyView/>
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:WszystkieRezerwacjeViewModel}">
+        <vw:WszystkieRezerwacjeView/>
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:WszystkieStanowiskaPracownikaViewModel}">
+        <vw:WszystkieStanowiskaPracownikaView/>
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:WszystkieUslugiViewModel}">
+        <vw:WszystkieUslugiView/>
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:NowaFakturaViewModel}">
+        <vw:NowaFakturaView/>
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:NowyKlientViewModel}">
+        <vw:NowyKlientView/>
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:NowyNapojViewModel}">
+        <vw:NowyNapojView/>
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:NowyPosilekViewModel}">
+        <vw:NowyPosilekView/>
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:NowaPotrawaViewModel}">
+        <vw:NowaPotrawaView/>
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:NowaPozycjaFakturyViewModel}">
+        <vw:NowaPozycjaFakturyView/>
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:NoweStanowiskoPracownikaViewModel}">
+        <vw:NoweStanowiskoPracownikaView/>
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:NowaUslugaViewModel}">
+        <vw:NowaUslugaView/>
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:NowaRezerwacjaViewModel}">
+        <vw:NowaRezerwacjaView/>
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:NowyPokojViewModel}">
+        <vw:NowyPokojView/>
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:WszystkieAdresyViewModel}">
+        <vw:WszystkieAdresyView/>
+    </DataTemplate>
+    
+    <DataTemplate DataType="{x:Type vm:NowyAdresViewModel}">
+        <vw:NowyAdresView/>
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:RaportRezerwacjiViewModel}">
+        <vw:RaportRezerwacjiView/>
+    </DataTemplate>
+    
+    <DataTemplate DataType="{x:Type vm:RaportPotrawViewModel}">
+        <vw:RaportPotrawView/>
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:RaportRestauracjiViewModel}">
+        <vw:RaportRestauracjiView/>
+    </DataTemplate>
+
+    
+    
+    <Style x:Key="MainHCCStyle" TargetType="{x:Type HeaderedContentControl}">
+        <Setter Property="IsTabStop" Value="False" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <!-- 
+        This template ensures that content of a HeaderedContentControl 
+        fills the available vertical space. 
+        -->
+                <ControlTemplate TargetType="{x:Type HeaderedContentControl}">
+                    <DockPanel>
+                        <ContentPresenter 
+              DockPanel.Dock="Top"
+              ContentSource="Header" 
+              ContentTemplate="{TemplateBinding HeaderTemplate}" 
+              />
+                        <ContentPresenter 
+              ContentSource="Content" 
+              ContentTemplate="{TemplateBinding ContentTemplate}" 
+              />
+                    </DockPanel>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--
+  This style ensures that the borders in the main window are consistent.
+  -->
+    <Style x:Key="MainBorderStyle" TargetType="{x:Type Border}">
+        <Setter Property="Background" Value="WhiteSmoke" />
+        <Setter Property="BorderBrush" Value="LightGray" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="CornerRadius" Value="5" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+    </Style>
+
+    <!--
+  This template explains how to render the list of commands on the left
+  side in the main window (the 'Control Panel' area).
+  -->
+    <DataTemplate x:Key="CommandsTemplate">
+        <ItemsControl IsTabStop="False" ItemsSource="{Binding}" Margin="6,2">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                   
+                    <Border 
+                        
+                        Margin="1"  
+                        Width="130"
+                        SnapsToDevicePixels="True" 
+                        Cursor="Hand" 
+                        Padding="3" 
+                        HorizontalAlignment="Center" 
+                    >
+                        <TextBlock Margin="1,3" Padding="0,4,0,4">
+                            <Hyperlink 
+                                Command="{Binding Path=Command}" 
+                                Foreground="White" 
+                                TextDecorations="{x:Null}" 
+                                FontSize="13" 
+                                FontFamily="Courier" 
+                                FontWeight="Bold"
+                            >
+                            <TextBlock 
+                                Text="{Binding Path=DisplayName}"
+                            />
+                            </Hyperlink>
+                        </TextBlock>
+                    </Border>
+                   
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+    </DataTemplate>
+
+    <!-- 
+  This template explains how to render 
+  a tab item with a close button.
+  -->
+    <DataTemplate x:Key="ClosableTabItemTemplate">
+        <DockPanel Width="auto">
+            <Button 
+        Background="Transparent" 
+        Foreground="Black"
+        Command="{Binding Path=CloseCommand}"
+        Content="X"
+        Cursor="Hand"
+        DockPanel.Dock="Right"
+        Focusable="False"
+        FontFamily="Courier" 
+        FontSize="9"
+        FontWeight="Bold"  
+        Margin="10,1,0,0"
+        Padding="0"
+        VerticalContentAlignment="Bottom"
+        Width="16" Height="16" 
+        />
+            <ContentPresenter 
+        Content="{Binding Path=DisplayName}" 
+        VerticalAlignment="Center" 
+        />
+        </DockPanel>
+    </DataTemplate>
+    
+
+    <!--
+  This template explains how to render the 'Workspace' content area in the main window.
+  -->
+    <DataTemplate x:Key="WorkspacesTemplate">
+        <TabControl 
+      IsSynchronizedWithCurrentItem="True" 
+      ItemsSource="{Binding}" 
+      ItemTemplate="{StaticResource ClosableTabItemTemplate}"
+      Margin="0"
+      />
+    </DataTemplate>
+
+
+
+
+    <!--moje style-->
+    <Style x:Key="MenuGlowne" TargetType="Menu">
+    </Style>
+
+    <Style x:Key="MenuItemGlowny" TargetType="MenuItem">
+        <Setter Property="Margin" Value="3" />
+    </Style>
+
+    <Style x:Key="ToolBarGlowny" TargetType="ToolBar">
+        <Setter Property="Background" Value="#e4ebf4" />
+    </Style>
+
+    <Style x:Key="ToggleButtonPasekNarzedzi" TargetType="ToggleButton">
+        <Setter Property="Height" Value="40" />
+        <Setter Property="Width" Value="auto" />
+        <Setter Property="Margin" Value="5,5,5,5" />
+        <Setter Property="HorizontalAlignment" Value="left" />
+    </Style>
+
+    <Style x:Key="TextBlockPasekNarzedzi" TargetType="TextBlock">
+        <Setter Property="Margin" Value="40,0,0,0" />
+        <Setter Property="FontFamily" Value="Arial" />
+        <Setter Property="FontSize" Value="14" />
+    </Style>
+
+    <Style x:Key="StatusBarItemLewa" TargetType="StatusBarItem">
+        <Setter Property="Margin" Value="10,0,0,0" />
+        <Setter Property="Foreground" Value="White" />
+    </Style>
+
+    <Style x:Key="StatusBarItemPrawa" TargetType="StatusBarItem">
+        <Setter Property="HorizontalAlignment" Value="Right" />
+        <Setter Property="Margin" Value="0,0,10,0" />
+        <Setter Property="Foreground" Value="White" />
+    </Style>
+
+
+    <Style x:Key="MenuHeader" TargetType="{x:Type HeaderedContentControl}">
+        <Setter Property="HeaderTemplate">
+            <Setter.Value>
+                <DataTemplate>
+                    <Border 
+                        Background="Blue" 
+                        BorderBrush="LightGray" 
+                        BorderThickness="1" 
+                        CornerRadius="5" 
+                        Margin="4" 
+                        Padding="4" 
+                        SnapsToDevicePixels="True" 
+                        Visibility="Hidden"
+                    >
+                        <TextBlock 
+                            FontSize="14"
+                            FontWeight="Bold"
+                            Foreground="White" 
+                            HorizontalAlignment="Center"  
+                            Text="{TemplateBinding Content}" 
+                        />
+                       
+                    </Border>
+                    
+                </DataTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
+
+</ResourceDictionary>

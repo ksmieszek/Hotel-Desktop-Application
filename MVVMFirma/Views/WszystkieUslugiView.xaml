@@ -1,0 +1,30 @@
+﻿<local:WszystkieViewBaseZDedykowanymFiltrowaniem x:Class="MVVMFirma.Views.WszystkieUslugiView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:MVVMFirma.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    
+    <UserControl.Resources>
+        <ResourceDictionary Source="StyleZakladek.xaml"  />
+    </UserControl.Resources>
+
+    <Grid>
+        <DataGrid  AutoGenerateColumns="False" ItemsSource="{Binding  List}" SelectedItem="{Binding WybranaUsluga,Mode=TwoWay}"
+            AlternatingRowBackground="LightGray" Margin="30,10,40,80"  FontSize="14" MinRowHeight="30" HorizontalGridLinesBrush="Transparent" VerticalGridLinesBrush="Transparent"
+            ColumnHeaderHeight="30"  MinColumnWidth="130" BorderBrush="Transparent" Background="White" ColumnHeaderStyle="{StaticResource desk_dataGridheader}" >
+            <DataGrid.Columns>
+                <DataGridTextColumn ElementStyle="{StaticResource desk_dataGridRows}" Header="Kod" Binding="{Binding Kod}"/>
+                <DataGridTextColumn ElementStyle="{StaticResource desk_dataGridRows}" Header="Nazwa" Binding="{Binding Nazwa}"/>
+                <DataGridTextColumn ElementStyle="{StaticResource desk_dataGridRows}" Header="Numer pokoju" Binding="{Binding NumerPokoju}"/>
+                <DataGridTextColumn ElementStyle="{StaticResource desk_dataGridRows}" Header="Data rozpoczęcia" Binding="{Binding DataRozpoczecia, StringFormat={}{0:MM/dd/yyyy}}"/>
+                <DataGridTextColumn ElementStyle="{StaticResource desk_dataGridRows}" Header="Data zakończenia" Binding="{Binding DataZakonczenia, StringFormat={}{0:MM/dd/yyyy}}"/>
+                <DataGridTextColumn ElementStyle="{StaticResource desk_dataGridRows}" Header="Potrawa" Binding="{Binding Potrawa}"/>
+                <DataGridTextColumn ElementStyle="{StaticResource desk_dataGridRows}" Header="Napój" Binding="{Binding Napoj}"/>
+                <DataGridTextColumn ElementStyle="{StaticResource desk_dataGridRows}" Header="Data zamówienia" Binding="{Binding DataZamowienia, StringFormat={}{0:MM/dd/yyyy}}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</local:WszystkieViewBaseZDedykowanymFiltrowaniem>

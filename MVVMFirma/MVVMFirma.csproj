@@ -1,0 +1,736 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{435572FA-D2A2-48CA-B905-4A7899337063}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MVVMFirma</RootNamespace>
+    <AssemblyName>MVVMFirma</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CommonServiceLocator, Version=2.0.2.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\packages\CommonServiceLocator.2.0.2\lib\net40\CommonServiceLocator.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net40\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net40\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="GalaSoft.MvvmLight, Version=5.4.1.0, Culture=neutral, PublicKeyToken=0e453835af4ee6ce, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvvmLightLibs.5.4.1.1\lib\net40\GalaSoft.MvvmLight.dll</HintPath>
+    </Reference>
+    <Reference Include="GalaSoft.MvvmLight.Extras, Version=5.4.1.0, Culture=neutral, PublicKeyToken=f46ff315b1088208, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvvmLightLibs.5.4.1.1\lib\net40\GalaSoft.MvvmLight.Extras.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Windows.Interactivity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvvmLightLibs.5.4.1.1\lib\net40\System.Windows.Interactivity.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Helper\BaseCommand.cs" />
+    <Compile Include="Models\BusinessLogic\DatabaseClass.cs" />
+    <Compile Include="Models\BusinessLogic\PotrawaB.cs" />
+    <Compile Include="Models\BusinessLogic\RestauracjaB.cs" />
+    <Compile Include="Models\BusinessLogic\RezerwacjaB.cs" />
+    <Compile Include="Models\BusinessLogic\UtargB.cs" />
+    <Compile Include="Models\EntitiesForView\AdresForAllView.cs" />
+    <Compile Include="Models\EntitiesForView\ComboBoxKeyAndValue.cs" />
+    <Compile Include="Models\EntitiesForView\FakturaForAllView.cs" />
+    <Compile Include="Models\EntitiesForView\KlientForAllView.cs" />
+    <Compile Include="Models\EntitiesForView\NapojForAllView.cs" />
+    <Compile Include="Models\EntitiesForView\PokojForAllView.cs" />
+    <Compile Include="Models\EntitiesForView\PosilekForAllView.cs" />
+    <Compile Include="Models\EntitiesForView\PotrawyForAllView.cs" />
+    <Compile Include="Models\EntitiesForView\PozycjaFakturyForAllView.cs" />
+    <Compile Include="Models\EntitiesForView\PracownikForAllView.cs" />
+    <Compile Include="Models\EntitiesForView\RezerwacjaForAllView.cs" />
+    <Compile Include="Models\EntitiesForView\StanowiskoPracownikaForAllView.cs" />
+    <Compile Include="Models\EntitiesForView\UslugaForAllView.cs" />
+    <Compile Include="Models\Entities\Adresy.cs">
+      <DependentUpon>ModelHotel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entities\Faktury.cs">
+      <DependentUpon>ModelHotel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entities\Klienci.cs">
+      <DependentUpon>ModelHotel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entities\ModelHotel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelHotel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entities\ModelHotel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelHotel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entities\ModelHotel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelHotel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entities\Napoje.cs">
+      <DependentUpon>ModelHotel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entities\Pokoje.cs">
+      <DependentUpon>ModelHotel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entities\Posilki.cs">
+      <DependentUpon>ModelHotel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entities\Potrawy.cs">
+      <DependentUpon>ModelHotel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entities\PozycjeFaktury.cs">
+      <DependentUpon>ModelHotel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entities\Pracownicy.cs">
+      <DependentUpon>ModelHotel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entities\Rezerwacje.cs">
+      <DependentUpon>ModelHotel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entities\RodzajeKlientow.cs">
+      <DependentUpon>ModelHotel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entities\RodzajeNapojow.cs">
+      <DependentUpon>ModelHotel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entities\RodzajePotraw.cs">
+      <DependentUpon>ModelHotel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entities\SposobyPlatnosci.cs">
+      <DependentUpon>ModelHotel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entities\Stanowiska.cs">
+      <DependentUpon>ModelHotel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entities\StanowiskaPracownikow.cs">
+      <DependentUpon>ModelHotel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entities\StatusyPokoju.cs">
+      <DependentUpon>ModelHotel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entities\sysdiagrams.cs">
+      <DependentUpon>ModelHotel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entities\Uslugi.cs">
+      <DependentUpon>ModelHotel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Validators\Validators.cs" />
+    <Compile Include="ViewModels\BaseViewModel.cs" />
+    <Compile Include="ViewModels\CommandViewModel.cs" />
+    <Compile Include="ViewModels\EmailViewModel.cs" />
+    <Compile Include="ViewModels\GrafikViewModel.cs" />
+    <Compile Include="ViewModels\JedenViewModel.cs" />
+    <Compile Include="ViewModels\MainWindowViewModel.cs" />
+    <Compile Include="ViewModels\NowaFakturaViewModel.cs" />
+    <Compile Include="ViewModels\NowaPotrawaViewModel.cs" />
+    <Compile Include="ViewModels\NowaPozycjaFakturyViewModel.cs" />
+    <Compile Include="ViewModels\NowaRezerwacjaViewModel.cs" />
+    <Compile Include="ViewModels\NowaUslugaViewModel.cs" />
+    <Compile Include="ViewModels\NoweStanowiskoPracownikaViewModel.cs" />
+    <Compile Include="ViewModels\NoweStanowiskoViewModel.cs" />
+    <Compile Include="ViewModels\NowyAdresViewModel.cs" />
+    <Compile Include="ViewModels\NowyKlientViewModel.cs" />
+    <Compile Include="ViewModels\NowyNapojViewModel.cs" />
+    <Compile Include="ViewModels\NowyPokojViewModel.cs" />
+    <Compile Include="ViewModels\NowyPosilekViewModel.cs" />
+    <Compile Include="ViewModels\NowyPracownikViewModel.cs" />
+    <Compile Include="ViewModels\NowyRodzajKlientowViewModel.cs" />
+    <Compile Include="ViewModels\NowyRodzajNapojowViewModel.cs" />
+    <Compile Include="ViewModels\NowyRodzajPotrawViewModel.cs" />
+    <Compile Include="ViewModels\NowySposobPlatnosciViewModel.cs" />
+    <Compile Include="ViewModels\NowyStatusPokojuViewModel.cs" />
+    <Compile Include="ViewModels\RaportPotrawViewModel.cs" />
+    <Compile Include="ViewModels\RaportRestauracjiViewModel.cs" />
+    <Compile Include="ViewModels\RaportRezerwacjiViewModel.cs" />
+    <Compile Include="ViewModels\StatystykiViewModel.cs" />
+    <Compile Include="ViewModels\WszyscyKlienciViewModel.cs" />
+    <Compile Include="ViewModels\WszyscyPracownicyViewModel.cs" />
+    <Compile Include="ViewModels\WszystkieAdresyViewModel.cs" />
+    <Compile Include="ViewModels\WszystkieFakturyViewModel.cs" />
+    <Compile Include="ViewModels\WszystkieNapojeViewModel.cs" />
+    <Compile Include="ViewModels\WszystkiePokojeViewModel.cs" />
+    <Compile Include="ViewModels\WorkspaceViewModel.cs" />
+    <Compile Include="ViewModels\WszystkiePosilkiViewModel.cs" />
+    <Compile Include="ViewModels\WszystkiePotrawyViewModel.cs" />
+    <Compile Include="ViewModels\WszystkiePozycjeFakturyViewModel.cs" />
+    <Compile Include="ViewModels\WszystkieRezerwacjeViewModel.cs" />
+    <Compile Include="ViewModels\WszystkieRodzajeKlientowViewModel.cs" />
+    <Compile Include="ViewModels\WszystkieRodzajeNapojowViewModel.cs" />
+    <Compile Include="ViewModels\WszystkieRodzajePotrawViewModel.cs" />
+    <Compile Include="ViewModels\WszystkieSposobyPlatnosciViewModel.cs" />
+    <Compile Include="ViewModels\WszystkieStanowiskaPracownikaViewModel.cs" />
+    <Compile Include="ViewModels\WszystkieStanowiskaViewModel.cs" />
+    <Compile Include="ViewModels\WszystkieStatusyPokojuViewModel.cs" />
+    <Compile Include="ViewModels\WszystkieUslugiViewModel.cs" />
+    <Compile Include="ViewModels\WszystkieViewModel.cs" />
+    <Compile Include="ViewModel\MainViewModel.cs" />
+    <Compile Include="ViewModel\ViewModelLocator.cs" />
+    <Compile Include="Views\EmailView.xaml.cs">
+      <DependentUpon>EmailView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\GrafikView.xaml.cs">
+      <DependentUpon>GrafikView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\JedenViewBase.cs" />
+    <Compile Include="Views\MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\NowaFakturaView.xaml.cs">
+      <DependentUpon>NowaFakturaView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\NowaPotrawaView.xaml.cs">
+      <DependentUpon>NowaPotrawaView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\NowaPozycjaFakturyView.xaml.cs">
+      <DependentUpon>NowaPozycjaFakturyView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\NowaRezerwacjaView.xaml.cs">
+      <DependentUpon>NowaRezerwacjaView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\NowaUslugaView.xaml.cs">
+      <DependentUpon>NowaUslugaView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\NoweStanowiskoPracownikaView.xaml.cs">
+      <DependentUpon>NoweStanowiskoPracownikaView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\NoweStanowiskoView.xaml.cs">
+      <DependentUpon>NoweStanowiskoView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\NowyAdresView.xaml.cs">
+      <DependentUpon>NowyAdresView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\NowyKlientView.xaml.cs">
+      <DependentUpon>NowyKlientView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\NowyNapojView.xaml.cs">
+      <DependentUpon>NowyNapojView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\NowyPokojView.xaml.cs">
+      <DependentUpon>NowyPokojView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\NowyPosilekView.xaml.cs">
+      <DependentUpon>NowyPosilekView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\NowyPracownikView.xaml.cs">
+      <DependentUpon>NowyPracownikView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\NowyRodzajKlientowView.xaml.cs">
+      <DependentUpon>NowyRodzajKlientowView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\NowyRodzajNapojowView.xaml.cs">
+      <DependentUpon>NowyRodzajNapojowView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\NowyRodzajPotrawView.xaml.cs">
+      <DependentUpon>NowyRodzajPotrawView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\NowySposobPlatnosciView.xaml.cs">
+      <DependentUpon>NowySposobPlatnosciView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\NowyStatusPokojuView.xaml.cs">
+      <DependentUpon>NowyStatusPokojuView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\RaportPotrawView.xaml.cs">
+      <DependentUpon>RaportPotrawView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\RaportRestauracjiView.xaml.cs">
+      <DependentUpon>RaportRestauracjiView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\RaportRezerwacjiView.xaml.cs">
+      <DependentUpon>RaportRezerwacjiView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\StatystykiView.xaml.cs">
+      <DependentUpon>StatystykiView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\WszyscyKlienciView.xaml.cs">
+      <DependentUpon>WszyscyKlienciView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\WszyscyPracownicyView.xaml.cs">
+      <DependentUpon>WszyscyPracownicyView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\WszystkieAdresyView.xaml.cs">
+      <DependentUpon>WszystkieAdresyView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\WszystkieFakturyView.xaml.cs">
+      <DependentUpon>WszystkieFakturyView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\WszystkieNapojeView.xaml.cs">
+      <DependentUpon>WszystkieNapojeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\WszystkiePokojeView.xaml.cs">
+      <DependentUpon>WszystkiePokojeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\WszystkiePosilkiView.xaml.cs">
+      <DependentUpon>WszystkiePosilkiView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\WszystkiePotrawyView.xaml.cs">
+      <DependentUpon>WszystkiePotrawyView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\WszystkiePozycjeFakturyView.xaml.cs">
+      <DependentUpon>WszystkiePozycjeFakturyView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\WszystkieRezerwacjeView.xaml.cs">
+      <DependentUpon>WszystkieRezerwacjeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\WszystkieRodzajeKlientowView.xaml.cs">
+      <DependentUpon>WszystkieRodzajeKlientowView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\WszystkieRodzajeNapojowView.xaml.cs">
+      <DependentUpon>WszystkieRodzajeNapojowView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\WszystkieRodzajePotrawView.xaml.cs">
+      <DependentUpon>WszystkieRodzajePotrawView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\WszystkieSposobyPlatnosciView.xaml.cs">
+      <DependentUpon>WszystkieSposobyPlatnosciView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\WszystkieStanowiskaPracownikaView.xaml.cs">
+      <DependentUpon>WszystkieStanowiskaPracownikaView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\WszystkieStanowiskaView.xaml.cs">
+      <DependentUpon>WszystkieStanowiskaView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\WszystkieStatusyPokojuView.xaml.cs">
+      <DependentUpon>WszystkieStatusyPokojuView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\WszystkieUslugiView.xaml.cs">
+      <DependentUpon>WszystkieUslugiView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\WszystkieViewBase.cs" />
+    <Compile Include="Views\WszystkieViewBaseZDedykowanymFiltrowaniem.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="App.Config" />
+    <EntityDeploy Include="Models\Entities\ModelHotel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ModelHotel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Models\Entities\ModelHotel.edmx.diagram">
+      <DependentUpon>ModelHotel.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Themes\Generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\EmailView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\GrafikView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MainWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MainWindowResources.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\NowaFakturaView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\NowaPotrawaView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\NowaPozycjaFakturyView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\NowaRezerwacjaView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\NowaUslugaView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\NoweStanowiskoPracownikaView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\NoweStanowiskoView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\NowyAdresView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\NowyKlientView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\NowyNapojView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\NowyPokojView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\NowyPosilekView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\NowyPracownikView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\NowyRodzajKlientowView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\NowyRodzajNapojowView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\NowyRodzajPotrawView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\NowySposobPlatnosciView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\NowyStatusPokojuView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\RaportPotrawView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\RaportRestauracjiView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\RaportRezerwacjiView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\StatystykiView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\StyleZakladek.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\WszyscyKlienciView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\WszyscyPracownicyView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\WszystkieAdresyView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\WszystkieFakturyView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\WszystkieNapojeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\WszystkiePokojeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\WszystkiePosilkiView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\WszystkiePotrawyView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\WszystkiePozycjeFakturyView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\WszystkieRezerwacjeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\WszystkieRodzajeKlientowView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\WszystkieRodzajeNapojowView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\WszystkieRodzajePotrawView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\WszystkieSposobyPlatnosciView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\WszystkieStanowiskaPracownikaView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\WszystkieStanowiskaView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\WszystkieStatusyPokojuView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\WszystkieUslugiView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Content\Icons\10079683381543238899-128.png" />
+    <Resource Include="Content\Icons\10094974981543238852-128.png" />
+    <Resource Include="Content\Icons\10101259821543238869-128.png" />
+    <Resource Include="Content\Icons\1052096901582634797-128.png" />
+    <Resource Include="Content\Icons\10886806321581426690-128.png" />
+    <Resource Include="Content\Icons\10958013781543238916-128.png" />
+    <Resource Include="Content\Icons\11483072771582634772-128.png" />
+    <Resource Include="Content\Icons\11507479811543238894-128.png" />
+    <Resource Include="Content\Icons\11688289221543238957-128.png" />
+    <Resource Include="Content\Icons\117199341543238913-128.png" />
+    <Resource Include="Content\Icons\11721135771582634764-128.png" />
+    <Resource Include="Content\Icons\11795491581543238870-128.png" />
+    <Resource Include="Content\Icons\11816852101582634760-128.png" />
+    <Resource Include="Content\Icons\12040721761543238917-128.png" />
+    <Resource Include="Content\Icons\12199761061582634792-128.png" />
+    <Resource Include="Content\Icons\12506835751543238941-128.png" />
+    <Resource Include="Content\Icons\12552441721543238940-128.png" />
+    <Resource Include="Content\Icons\12630425851543238896-128.png" />
+    <Resource Include="Content\Icons\12687287281543238916-128.png" />
+    <Resource Include="Content\Icons\12796502201582634774-128.png" />
+    <Resource Include="Content\Icons\12816488951543238855-128.png" />
+    <Resource Include="Content\Icons\12937133821582634762-128.png" />
+    <Resource Include="Content\Icons\12989878351582634759-128.png" />
+    <Resource Include="Content\Icons\13040218151543238914-128.png" />
+    <Resource Include="Content\Icons\13217737781543238879-128.png" />
+    <Resource Include="Content\Icons\13231397871582634758-128.png" />
+    <Resource Include="Content\Icons\13448154951543238955-128.png" />
+    <Resource Include="Content\Icons\13647762281581426686-128.png" />
+    <Resource Include="Content\Icons\13737777481582634785-128.png" />
+    <Resource Include="Content\Icons\13971043351543238891-128.png" />
+    <Resource Include="Content\Icons\13995090641543238940-128.png" />
+    <Resource Include="Content\Icons\1403974191581426687-128.png" />
+    <Resource Include="Content\Icons\14223284391581426688-128.png" />
+    <Resource Include="Content\Icons\14353561371543238919-128.png" />
+    <Resource Include="Content\Icons\14541883681543238916-128.png" />
+    <Resource Include="Content\Icons\14649695941582634785-128.png" />
+    <Resource Include="Content\Icons\14656903741543238852-128.png" />
+    <Resource Include="Content\Icons\14698440671543238957-128.png" />
+    <Resource Include="Content\Icons\14895795181582634763-128.png" />
+    <Resource Include="Content\Icons\1489612201582634772-128.png" />
+    <Resource Include="Content\Icons\15028084081543238917-128.png" />
+    <Resource Include="Content\Icons\15251955891543238891-128.png" />
+    <Resource Include="Content\Icons\15428850421543238904-128.png" />
+    <Resource Include="Content\Icons\15438494881543238919-128.png" />
+    <Resource Include="Content\Icons\15619942791582634763-128.png" />
+    <Resource Include="Content\Icons\15746672971543238863-128.png" />
+    <Resource Include="Content\Icons\16091299691543238862-128.png" />
+    <Resource Include="Content\Icons\16199658451543238897-128.png" />
+    <Resource Include="Content\Icons\16664526181543238915-128.png" />
+    <Resource Include="Content\Icons\16871830251581426690-128.png" />
+    <Resource Include="Content\Icons\17068455831543238934-128.png" />
+    <Resource Include="Content\Icons\17088982931581426684-128.png" />
+    <Resource Include="Content\Icons\17131343181543238890-128.png" />
+    <Resource Include="Content\Icons\17215092901543238876-128.png" />
+    <Resource Include="Content\Icons\17253666931543238909-128.png" />
+    <Resource Include="Content\Icons\17364432941543238894-128.png" />
+    <Resource Include="Content\Icons\17499489811581426687-128.png" />
+    <Resource Include="Content\Icons\17522985921543238896-128.png" />
+    <Resource Include="Content\Icons\17636894641543238864-128.png" />
+    <Resource Include="Content\Icons\17953517721582634781-128.png" />
+    <Resource Include="Content\Icons\17980591841543238939-128.png" />
+    <Resource Include="Content\Icons\17983509151543238866-128.png" />
+    <Resource Include="Content\Icons\18070286501543238910-128.png" />
+    <Resource Include="Content\Icons\18325379151543238939-128.png" />
+    <Resource Include="Content\Icons\18537612601543238905-128.png" />
+    <Resource Include="Content\Icons\18560183031543238901-128.png" />
+    <Resource Include="Content\Icons\18635412531543238915-128.png" />
+    <Resource Include="Content\Icons\18769148821543238916-128.png" />
+    <Resource Include="Content\Icons\18893517291543238894-128.png" />
+    <Resource Include="Content\Icons\18991364301543238914-128.png" />
+    <Resource Include="Content\Icons\1901266501543238937-128.png" />
+    <Resource Include="Content\Icons\19067155231543238878-128.png" />
+    <Resource Include="Content\Icons\19068768331582634771-128.png" />
+    <Resource Include="Content\Icons\19101184011543238918-128.png" />
+    <Resource Include="Content\Icons\19566247631581426691-128.png" />
+    <Resource Include="Content\Icons\20136677451543238895-128.png" />
+    <Resource Include="Content\Icons\20407009431543238936-128.png" />
+    <Resource Include="Content\Icons\20518457671581426692-128.png" />
+    <Resource Include="Content\Icons\20619721991581426692-128.png" />
+    <Resource Include="Content\Icons\20924305121543238852-128.png" />
+    <Resource Include="Content\Icons\2505306791581426692-128.png" />
+    <Resource Include="Content\Icons\2533189721581426686-128.png" />
+    <Resource Include="Content\Icons\2547608181543238954-128.png" />
+    <Resource Include="Content\Icons\2605826951582634761-128.png" />
+    <Resource Include="Content\Icons\2725159511543238876-128.png" />
+    <Resource Include="Content\Icons\2856511301581426686-128.png" />
+    <Resource Include="Content\Icons\3092831061543238897-128.png" />
+    <Resource Include="Content\Icons\3642717691543238914-128.png" />
+    <Resource Include="Content\Icons\3677760161543238903-128.png" />
+    <Resource Include="Content\Icons\3819595571543238914-128.png" />
+    <Resource Include="Content\Icons\4177409791543238955-128.png" />
+    <Resource Include="Content\Icons\4308435971543238863-128.png" />
+    <Resource Include="Content\Icons\443066531543238873-128.png" />
+    <Resource Include="Content\Icons\4464230081543238881-128.png" />
+    <Resource Include="Content\Icons\4498062351543238871-128.png" />
+    <Resource Include="Content\Icons\4554010011582634771-128.png" />
+    <Resource Include="Content\Icons\4892753821543238915-128.png" />
+    <Resource Include="Content\Icons\4987345791543238941-128.png" />
+    <Resource Include="Content\Icons\5348171721543238916-128.png" />
+    <Resource Include="Content\Icons\5493700351543238875-128.png" />
+    <Resource Include="Content\Icons\5784707271582634768-128.png" />
+    <Resource Include="Content\Icons\5798666251543238869-128.png" />
+    <Resource Include="Content\Icons\5850231941582634765-128.png" />
+    <Resource Include="Content\Icons\6362561671543238881-128.png" />
+    <Resource Include="Content\Icons\6452975471582634796-128.png" />
+    <Resource Include="Content\Icons\6619449971543238856-128.png" />
+    <Resource Include="Content\Icons\6656690441543238903-128.png" />
+    <Resource Include="Content\Icons\6764424721581426690-128.png" />
+    <Resource Include="Content\Icons\677298941582634796-128.png" />
+    <Resource Include="Content\Icons\6892028711582634780-128.png" />
+    <Resource Include="Content\Icons\7003416761543238890-128.png" />
+    <Resource Include="Content\Icons\7036452071582634793-128.png" />
+    <Resource Include="Content\Icons\7039191431543238859-128.png" />
+    <Resource Include="Content\Icons\7205004841543238921-128.png" />
+    <Resource Include="Content\Icons\7520406921582634775-128.png" />
+    <Resource Include="Content\Icons\7777963481543238902-128.png" />
+    <Resource Include="Content\Icons\8308147201543238937-128.png" />
+    <Resource Include="Content\Icons\9248932031543238941-128.png" />
+    <Resource Include="Content\Icons\9261563581581426687-128.png" />
+    <Resource Include="Content\Icons\9362627471581426693-128.png" />
+    <Resource Include="Content\Icons\9575087111581426689-128.png" />
+    <Resource Include="Content\Icons\973587481543238906-128.png" />
+    <Resource Include="Content\Icons\974561131543238906-128.png" />
+    <Resource Include="Content\Icons\9960377921582634780-128.png" />
+    <Resource Include="Content\Icons\bed.png" />
+    <Resource Include="Content\Icons\double-bed.png" />
+    <Resource Include="Content\Icons\email.png" />
+    <Resource Include="Content\Icons\grafik.png" />
+    <Resource Include="Content\Icons\ksiega.png" />
+    <Resource Include="Content\Icons\pokoje.png" />
+    <Resource Include="Content\Icons\posilki.png" />
+    <Resource Include="Content\Icons\slumber.png" />
+    <Resource Include="Content\Icons\statystyki.png" />
+    <Resource Include="Content\Icons\uslugi.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Models\Entities\ModelHotel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ModelHotel.edmx</DependentUpon>
+      <LastGenOutput>ModelHotel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\Entities\ModelHotel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ModelHotel.edmx</DependentUpon>
+      <LastGenOutput>ModelHotel.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

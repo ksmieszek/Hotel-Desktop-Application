@@ -1,0 +1,281 @@
+﻿<Window x:Class="MVVMFirma.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"  
+        Title="Hotel" WindowState="Maximized"
+        xmlns:vm="clr-namespace:MVVMFirma.Views"
+        >
+
+    <Window.Resources>
+        <ResourceDictionary Source="MainWindowResources.xaml" />
+    </Window.Resources>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="180" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25" />
+            <RowDefinition Height="60" />
+            <RowDefinition />
+            <RowDefinition Height="30" />
+        </Grid.RowDefinitions>
+        <Menu Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource MenuGlowne}" >
+            <MenuItem Header="_Program" Style="{StaticResource MenuItemGlowny}">
+                <MenuItem Header="Ustawienia">
+                    <MenuItem.Icon>
+                        <Image Source="..\Content\Icons\12040721761543238917-128.png" />
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="Sprawdź aktualizacje">
+                    <MenuItem.Icon>
+                        <Image Source="..\Content\Icons\7039191431543238859-128.png" />
+                    </MenuItem.Icon>
+                </MenuItem>
+                <Separator />
+                <MenuItem Header="Baza danych">
+                    <MenuItem.Icon>
+                        <Image Source="..\Content\Icons\5493700351543238875-128.png" />
+                    </MenuItem.Icon>
+                    <MenuItem Header="Przywróć kopię bazy danych"></MenuItem>
+                    <MenuItem Header="Kopia zapasowa bazy danych"></MenuItem>
+                </MenuItem>
+                <MenuItem Header="Import rezerwacji">
+                    <MenuItem.Icon>
+                        <Image Source="..\Content\Icons\2725159511543238876-128.png" />
+                    </MenuItem.Icon>
+                </MenuItem>
+                <Separator />
+                <MenuItem Header="Zmień dane konta uzytkownika">
+                    <MenuItem.Icon>
+                        <Image Source="..\Content\Icons\13995090641543238940-128.png" />
+                    </MenuItem.Icon>
+                </MenuItem>
+                <Separator />
+                <MenuItem Header="Wyloguj" InputGestureText="Alt+F3">
+                    <MenuItem.Icon>
+                        <Image Source="..\Content\Icons\12506835751543238941-128.png" />
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="Wyjście" InputGestureText="Alt+F4">
+                    <MenuItem.Icon>
+                        <Image Source="..\Content\Icons\13040218151543238914-128.png" />
+                    </MenuItem.Icon>
+                </MenuItem>
+            </MenuItem>
+            <MenuItem Header="_System" Style="{StaticResource MenuItemGlowny}">
+                <MenuItem Header="Panel klienta">
+                    <MenuItem.Icon>
+                        <Image Source="..\Content\Icons\7036452071582634793-128.png" />
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="Dane obiektu">
+                    <MenuItem.Icon>
+                        <Image Source="..\Content\Icons\10886806321581426690-128.png" />
+                    </MenuItem.Icon>
+                </MenuItem>
+                <Separator />
+                <MenuItem Header="Baza klientów">
+                    <MenuItem.Icon>
+                        <Image Source="..\Content\Icons\9960377921582634780-128.png" />
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="Przypomnienia">
+                    <MenuItem.Icon>
+                        <Image Source="..\Content\Icons\6764424721581426690-128.png" />
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="Odwołane rezerwacje">
+                    <MenuItem.Icon>
+                        <Image Source="..\Content\Icons\20407009431543238936-128.png" />
+                    </MenuItem.Icon>
+                </MenuItem>
+            </MenuItem>
+            <MenuItem Header="_Zestawienia" Style="{StaticResource MenuItemGlowny}">
+                <MenuItem Header="Statystyki" Command="{Binding ShowStatystykiCommand}">
+                    <MenuItem.Icon>
+                        <Image Source="..\Content\Icons\2533189721581426686-128.png" />
+                    </MenuItem.Icon>
+                </MenuItem>
+                <Separator />
+                <MenuItem Header="Adresy" Command="{Binding ShowAdresyCommand}" />
+                
+                <MenuItem Header="Słowniki">
+                    <MenuItem Header="Stanowiska" Command="{Binding ShowStanowiskaCommand}" />
+                    <MenuItem Header="Statusy pokojów" Command="{Binding ShowStatusyPokojowCommand}" />
+                    <MenuItem Header="Rodzaje potraw" Command="{Binding ShowRodzajePotrawCommand}" />
+                    <MenuItem Header="Rodzaje napojów" Command="{Binding ShowRodzajeNapojowCommand}" />
+                    <MenuItem Header="Sposoby płatności" Command="{Binding ShowSposobyPlatnosciCommand}" />
+                    <MenuItem Header="Rodzaje klientów" Command="{Binding ShowRodzajeKlientowCommand}" />
+                </MenuItem>
+                
+                <Separator />
+                <MenuItem Header="Faktury" Command="{Binding ShowFakturyCommand}" />
+                <MenuItem Header="Pozycje faktury" Command="{Binding ShowPozycjeFakturyCommand}" />
+                <MenuItem Header="Usługi" Command="{Binding ShowUslugiCommand}" />
+                <MenuItem Header="Klienci" Command="{Binding ShowKlienciCommand}" />
+                <MenuItem Header="Rezerwacje" Command="{Binding ShowRezerwacjeCommand}" />
+                <MenuItem Header="Pokoje" Command="{Binding ShowPokojeCommand}" >
+                    <MenuItem.Icon>
+                        <Image Source="..\Content\Icons\bed.png" />
+                    </MenuItem.Icon>
+                </MenuItem>
+
+                <MenuItem Header="Restauracja">
+                    <MenuItem.Icon>
+                        <Image Source="..\Content\Icons\11795491581543238870-128.png" />
+                    </MenuItem.Icon>
+                    <MenuItem Header="Posiłki" Command="{Binding ShowPosilkiCommand}" />
+                    <MenuItem Header="Potrawy" Command="{Binding ShowPotrawyCommand}" />
+                    <MenuItem Header="Napoje" Command="{Binding ShowNapojeCommand}" />
+                </MenuItem>
+
+                
+                <MenuItem Header="Pracownicy" Command="{Binding ShowPracownicyCommand}" />
+                <MenuItem Header="Stanowiska pracownika" Command="{Binding ShowStanowiskaPracownikaCommand}" />
+                
+            </MenuItem>
+            <MenuItem Header="_Raporty" Style="{StaticResource MenuItemGlowny}">
+
+                <MenuItem Header="Raport rezerwacji" Command="{Binding ShowRaportRezerwacjiCommand}" />
+                <MenuItem Header="Raport potraw" Command="{Binding ShowRaportPotrawCommand}" />
+                <MenuItem Header="Raport napojów" Command="{Binding ShowRaportRestauracjiCommand}" />
+
+            </MenuItem>
+            <!--<MenuItem Header="_Dodaj" >
+                <MenuItem Header="Restauracja">
+                    <MenuItem Header="Nowa potrawa" Command="{Binding NewRodzajPotrawaCommand}" />
+                    <MenuItem Header="Nowy napój" Command="{Binding NewRodzajNapojCommand}" />
+                </MenuItem>
+                <MenuItem Header="Pracownicy">
+                    <MenuItem Header="Nowe stanowisko" Command="{Binding NewStanowiskoCommand}" />
+                    <MenuItem Header="Nowy pracownik" Command="{Binding NewPracownikCommand}" />
+                </MenuItem>
+                <MenuItem Header="Nowy status pokoju" Command="{Binding NewStatusPokojuCommand}" />
+                <MenuItem Header="Nowy sposób płatności" Command="{Binding NewSposobPlatnosciCommand}" />
+                <MenuItem Header="Nowy rodzaj klienta" Command="{Binding NewRodzajKlientaCommand}" />
+                <Separator />
+                <MenuItem Header="Nowa faktura" Command="{Binding NewFakturaCommand}" />
+                <MenuItem Header="Nowy klient" Command="{Binding NewKlientCommand}" />
+                <MenuItem Header="Nowy napój" Command="{Binding NewNapojCommand}" />
+                <MenuItem Header="Nowy pokój" Command="{Binding NewPokojCommand}" />
+                <MenuItem Header="Nowy posiłek" Command="{Binding NewPosilekCommand}" />
+                <MenuItem Header="Nowa potrawa" Command="{Binding NewPotrawaCommand}" />
+                <MenuItem Header="Nowa pozycja faktury" Command="{Binding NewPozycjaFakturyCommand}" />
+                <MenuItem Header="Nowa rezerwacja" Command="{Binding NewRezerwacjaCommand}" />
+                <MenuItem Header="Nowe stanowisko pracownika" Command="{Binding NewStanowiskoPracownikaCommand}" />
+                <MenuItem Header="Nowa usługa" Command="{Binding NewUslugaCommand}" />
+                
+            </MenuItem>-->
+            <MenuItem Header="_Widok" Style="{StaticResource MenuItemGlowny}">
+                <MenuItem Header="Pasek narzędzi" />
+                <MenuItem Header="Pasek stanu" />
+                <Separator />
+                <MenuItem Header="Zapisz układ okna">
+                    <MenuItem.Icon>
+                        <Image Source="..\Content\Icons\18769148821543238916-128.png" />
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="Zarządzaj układem okna">
+                    <MenuItem.Icon>
+                        <Image Source="..\Content\Icons\3092831061543238897-128.png" />
+                    </MenuItem.Icon>
+                </MenuItem>
+                <Separator />
+                <MenuItem Header="Motyw" />
+            </MenuItem>
+            <MenuItem Header="_Pomoc" Style="{StaticResource MenuItemGlowny}">
+                <MenuItem Header="Pomoc techniczna" InputGestureText="Ctrl+F1">
+                    <MenuItem.Icon>
+                        <Image Source="..\Content\Icons\20136677451543238895-128.png" />
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="Szybki start">
+                    <MenuItem.Icon>
+                        <Image Source="..\Content\Icons\17522985921543238896-128.png" />
+                    </MenuItem.Icon>
+                </MenuItem>
+                <Separator />
+                <MenuItem Header="Wyślij opinię" >
+                    <MenuItem.Icon>
+                        <Image Source="..\Content\Icons\17364432941543238894-128.png" />
+                    </MenuItem.Icon>
+                </MenuItem>
+                <Separator />
+                <MenuItem Header="O programie" />
+            </MenuItem>
+        </Menu>
+        <ToolBar Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource ToolBarGlowny}" >
+            <ToggleButton Style="{StaticResource ToggleButtonPasekNarzedzi}">
+                <TextBlock Style="{StaticResource TextBlockPasekNarzedzi}" >Grafik</TextBlock>
+                <ToggleButton.Background>
+                    <ImageBrush ImageSource="..\Content\Icons\grafik.png" Stretch="Uniform" AlignmentX="Left"/>
+                </ToggleButton.Background>
+            </ToggleButton>
+            <ToggleButton Style="{StaticResource ToggleButtonPasekNarzedzi}">
+                <TextBlock Style="{StaticResource TextBlockPasekNarzedzi}">Skrzynka e-mail</TextBlock>
+                <ToggleButton.Background>
+                    <ImageBrush ImageSource="..\Content\Icons\email.png" Stretch="Uniform" AlignmentX="Left"/>
+                </ToggleButton.Background>
+            </ToggleButton>
+            <ToggleButton Style="{StaticResource ToggleButtonPasekNarzedzi}">
+                <TextBlock Style="{StaticResource TextBlockPasekNarzedzi}">Księga meldunkowa</TextBlock>
+                <ToggleButton.Background>
+                    <ImageBrush ImageSource="..\Content\Icons\ksiega.png" Stretch="Uniform" AlignmentX="Left"/>
+                </ToggleButton.Background>
+            </ToggleButton>
+            <ToggleButton Style="{StaticResource ToggleButtonPasekNarzedzi}" Command="{Binding ShowUslugiCommand}">
+                <TextBlock Style="{StaticResource TextBlockPasekNarzedzi}">Usługi</TextBlock>
+                <ToggleButton.Background>
+                    <ImageBrush ImageSource="..\Content\Icons\uslugi.png" Stretch="Uniform" AlignmentX="Left"/>
+                </ToggleButton.Background>
+            </ToggleButton>
+            <ToggleButton Style="{StaticResource ToggleButtonPasekNarzedzi}" Command="{Binding ShowPosilkiCommand}">
+                <TextBlock Style="{StaticResource TextBlockPasekNarzedzi}">Posiłki</TextBlock>
+                <ToggleButton.Background>
+                    <ImageBrush ImageSource="..\Content\Icons\posilki.png" Stretch="Uniform" AlignmentX="Left"/>
+                </ToggleButton.Background>
+            </ToggleButton>
+            <Separator />
+            <ToggleButton Style="{StaticResource ToggleButtonPasekNarzedzi}" Command="{Binding ShowStatystykiCommand}">
+                <TextBlock Style="{StaticResource TextBlockPasekNarzedzi}">Statystyki</TextBlock>
+                <ToggleButton.Background>
+                    <ImageBrush ImageSource="..\Content\Icons\statystyki.png" Stretch="Uniform" AlignmentX="Left"/>
+                </ToggleButton.Background>
+            </ToggleButton>
+        </ToolBar>
+        <!--<Border Grid.Row="2" Grid.Column="0" >
+            <HeaderedContentControl 
+                Header="Menu" 
+                Content="{Binding Path=Commands}" 
+                ContentTemplate="{StaticResource CommandsTemplate}"
+                Style="{StaticResource MenuHeader}"
+                />
+        </Border>-->
+        <StackPanel Grid.Row="2" Grid.Column="0" Background="#FF0077CC">
+            <HeaderedContentControl 
+                Header="Menu" 
+                Content="{Binding Path=Commands}" 
+                ContentTemplate="{StaticResource CommandsTemplate}"
+                Style="{StaticResource MenuHeader}"
+                />
+        </StackPanel>
+
+
+        <Border Grid.Row="2" Grid.Column="1" >
+            <HeaderedContentControl 
+                Content="{Binding Path=Workspaces}"
+                ContentTemplate="{StaticResource WorkspacesTemplate}"
+                Style="{StaticResource MainHCCStyle}" Margin="0,-2,0,0" BorderThickness="0,19,0,0"
+            />
+        </Border>
+        <StatusBar Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Background="#FF0077CC">
+            <StatusBarItem Style="{StaticResource StatusBarItemLewa}">
+                <TextBlock>Aplikacja Hotel</TextBlock>
+            </StatusBarItem>
+            <StatusBarItem Style="{StaticResource StatusBarItemPrawa}">
+                <TextBlock>Karol Śmieszek</TextBlock>
+            </StatusBarItem>
+        </StatusBar>
+    </Grid>
+</Window>

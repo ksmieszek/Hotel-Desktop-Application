@@ -1,0 +1,177 @@
+﻿<local:JedenViewBase x:Class="MVVMFirma.Views.NowyKlientView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:MVVMFirma.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+
+    <UserControl.Resources>
+        <ResourceDictionary Source="StyleZakladek.xaml"  />
+    </UserControl.Resources>
+    
+    <Grid Margin="30,20,0,0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0"  > 
+            <Label Content="Dane osobowe:" FontSize="13"/>
+            <Grid Margin="50,20,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="120"/>
+                    <ColumnDefinition Width="150"/>
+                    <ColumnDefinition Width="80"/>
+                    <ColumnDefinition Width="120"/>
+                    <ColumnDefinition Width="150"/>
+                    <ColumnDefinition Width="200"/>
+                    <ColumnDefinition Width="120"/>
+                    <ColumnDefinition Width="150"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="10"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="10"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="10"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="40"/>
+                </Grid.RowDefinitions>
+
+                <Label Grid.Row="0" Grid.Column="0" Style="{StaticResource desk_label}" Content="Imię"/>
+                <Border Grid.Row="0" Grid.Column="1" Style="{StaticResource desk_border}">
+                    <TextBox  Text="{Binding Imie, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"  
+                              Padding="3" BorderThickness="0" FontFamily="verdana" VerticalContentAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center"
+                              FontSize="12" Margin="1" Height="30" Width="150"  Validation.ErrorTemplate="{x:Null}"
+                    />
+                </Border> 
+
+                <Label Grid.Row="2" Grid.Column="0" Style="{StaticResource desk_label}" Content="Nazwisko"/>
+                <Border Grid.Row="2" Grid.Column="1" Style="{StaticResource desk_border}">
+                    <TextBox Text="{Binding Nazwisko, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                             Padding="3" BorderThickness="0" FontFamily="verdana" VerticalContentAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center"
+                              FontSize="12" Margin="1" Height="30" Width="150"  Validation.ErrorTemplate="{x:Null}"
+                    />
+                </Border>
+                
+                <Label Grid.Row="4" Grid.Column="0" Style="{StaticResource desk_label}" Content="PESEL"/>
+                <Border Grid.Row="4" Grid.Column="1" Style="{StaticResource desk_border}">
+                    <TextBox Text="{Binding PESEL, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                             Padding="3" BorderThickness="0" FontFamily="verdana" VerticalContentAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center"
+                              FontSize="12" Margin="1" Height="30" Width="150"  Validation.ErrorTemplate="{x:Null}"
+                    />
+                </Border>
+
+                <Label Grid.Row="6" Grid.Column="0" Style="{StaticResource desk_label}" Content="Płeć"/>
+                <Border Grid.Row="6" Grid.Column="1" Style="{StaticResource desk_border}" >
+                    <ComboBox Style="{StaticResource desk_combobox}" Text="{Binding Plec, UpdateSourceTrigger=PropertyChanged}">
+                        <ComboBoxItem Content="Mężczyzna"></ComboBoxItem>
+                        <ComboBoxItem Content="Kobieta"></ComboBoxItem>
+                    </ComboBox>
+                </Border>
+
+                <Label Grid.Row="0" Grid.Column="3" Style="{StaticResource desk_label}" Content="Drugie imię"/>
+                <Border Grid.Row="0" Grid.Column="4" Style="{StaticResource desk_border}">
+                    <TextBox Text="{Binding DrugieImie, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                             Padding="3" BorderThickness="0" FontFamily="verdana" VerticalContentAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center"
+                              FontSize="12" Margin="1" Height="30" Width="150"  Validation.ErrorTemplate="{x:Null}"
+                    />
+                </Border>
+
+                <Label Grid.Row="2" Grid.Column="3" Style="{StaticResource desk_label}" Content="Numer telefonu"/>
+                <Border Grid.Row="2" Grid.Column="4" Style="{StaticResource desk_border}">
+                    <TextBox  Text="{Binding Telefon, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                             Padding="3" BorderThickness="0" FontFamily="verdana" VerticalContentAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center"
+                              FontSize="12" Margin="1" Height="30" Width="150"  Validation.ErrorTemplate="{x:Null}"
+                    />
+                </Border>
+
+                <Label Grid.Row="4" Grid.Column="3" Style="{StaticResource desk_label}" Content="Email"/>
+                <Border Grid.Row="4" Grid.Column="4" Style="{StaticResource desk_border}">
+                    <TextBox Text="{Binding E_mail, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                             Padding="3" BorderThickness="0" FontFamily="verdana" VerticalContentAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center"
+                              FontSize="12" Margin="1" Height="30" Width="150"  Validation.ErrorTemplate="{x:Null}"
+                    />
+                </Border>
+
+                <Label Grid.Row="0" Grid.Column="6" Style="{StaticResource desk_label}" Content="Rodzaj klienta"/>
+                <Border Grid.Row="0" Grid.Column="7" Style="{StaticResource desk_border}" >
+                    <ComboBox Style="{StaticResource desk_combobox}"
+                       ItemsSource="{Binding  RodzajKlientaComboBoxItems}" DisplayMemberPath="Value" SelectedValuePath="Key" SelectedValue="{Binding Path=IdRodzaju,Mode=TwoWay}"      
+                    />
+                </Border>
+
+                <Label Grid.Row="2" Grid.Column="6" Style="{StaticResource desk_label}" Content="Nazwa firmy"/>
+                <Border Grid.Row="2" Grid.Column="7" Style="{StaticResource desk_border}">
+                    <TextBox Text="{Binding Firma, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                             Padding="3" BorderThickness="0" FontFamily="verdana" VerticalContentAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center"
+                              FontSize="12" Margin="1" Height="30" Width="150"  Validation.ErrorTemplate="{x:Null}"
+                    />
+                </Border>
+
+                <Label Grid.Row="4" Grid.Column="6" Style="{StaticResource desk_label}" Content="NIP"/>
+                <Border Grid.Row="4" Grid.Column="7" Style="{StaticResource desk_border}">
+                    <TextBox  Text="{Binding NIP, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                              Padding="3" BorderThickness="0" FontFamily="verdana" VerticalContentAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center"
+                              FontSize="12" Margin="1" Height="30" Width="150"  Validation.ErrorTemplate="{x:Null}"
+                    />
+                </Border>
+
+                <Label Grid.Row="6" Grid.Column="6" Style="{StaticResource desk_label}" Content="REGON"/>
+                <Border Grid.Row="6" Grid.Column="7" Style="{StaticResource desk_border}">
+                    <TextBox Text="{Binding REGON, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                             Padding="3" BorderThickness="0" FontFamily="verdana" VerticalContentAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center"
+                              FontSize="12" Margin="1" Height="30" Width="150"  Validation.ErrorTemplate="{x:Null}"
+                             />
+                </Border>
+
+            </Grid>
+        </StackPanel>
+
+        <StackPanel Grid.Row="2" >
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="150"/>
+                    <ColumnDefinition Width="150"/>
+                    <ColumnDefinition Width="10"/>
+                    <ColumnDefinition Width="150"/>
+                    <ColumnDefinition Width="10"/>
+                    <ColumnDefinition Width="150"/>
+                    <ColumnDefinition Width="10"/>
+                    <ColumnDefinition Width="150"/>
+                    <ColumnDefinition Width="10"/>
+                    <ColumnDefinition Width="150"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="20"/>
+                    <RowDefinition Height="30"/>
+                </Grid.RowDefinitions>
+
+                <Label Grid.Row="0" Grid.Column="0" Style="{StaticResource desk_label}" Content="Dane adresowe"  FontSize="13"/>
+
+                <Button Grid.Row="2" Grid.Column="0" Content="Adres" Style="{StaticResource desk_button}"  Command="{Binding ShowAdresy}" />
+                <TextBox Grid.Row="2" Grid.Column="1" Style="{StaticResource desk_textbox_disabled}" Text="{Binding AdresKodPocztowy, UpdateSourceTrigger=PropertyChanged}" />
+                <TextBox Grid.Row="2" Grid.Column="3" Style="{StaticResource desk_textbox_disabled}" Text="{Binding AdresMiasto, UpdateSourceTrigger=PropertyChanged}" />
+                <TextBox Grid.Row="2" Grid.Column="5" Style="{StaticResource desk_textbox_disabled}" Text="{Binding AdresUlica, UpdateSourceTrigger=PropertyChanged}" />
+                <TextBox Grid.Row="2" Grid.Column="7" Style="{StaticResource desk_textbox_disabled}" Text="{Binding AdresNumerBudynku, UpdateSourceTrigger=PropertyChanged}" />
+                <TextBox Grid.Row="2" Grid.Column="9" Style="{StaticResource desk_textbox_disabled}" Text="{Binding AdresNumerLokalu, UpdateSourceTrigger=PropertyChanged}" />
+            </Grid>
+        </StackPanel>
+
+        <Expander Grid.Row="4" Header="Dodatkowe informacje" IsExpanded="False" Margin="0,30,0,0">
+            <Grid Margin="50,20,0,0">
+                <Border Width="1550" Style="{StaticResource desk_border}" HorizontalAlignment="Left" >
+                    <TextBox Width="1550" Style="{StaticResource desk_richtextbox}" />
+                </Border>
+            </Grid>
+        </Expander>
+
+    </Grid>
+</local:JedenViewBase>
